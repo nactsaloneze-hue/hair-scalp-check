@@ -1,0 +1,1065 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f8f3ee" />
+  <meta name="description" content="約1分でわかる、髪と頭皮のセルフケア診断。" />
+  <title>髪と頭皮のセルフケア診断</title>
+  <style>
+    :root {
+      --bg: #f8f3ee;
+      --paper: #fffdf9;
+      --ink: #403734;
+      --muted: #817572;
+      --rose: #b88488;
+      --rose-deep: #8d6267;
+      --rose-soft: #ead6d8;
+      --beige: #e9ded1;
+      --sage: #9da08b;
+      --line: rgba(90, 72, 68, .14);
+      --shadow: 0 18px 55px rgba(83, 61, 56, .10);
+      --radius: 26px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% -8%, rgba(219, 187, 191, .32), transparent 30%),
+        radial-gradient(circle at 100% 18%, rgba(230, 218, 199, .42), transparent 28%),
+        var(--bg);
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    button, input { font: inherit; }
+    button { -webkit-tap-highlight-color: transparent; }
+
+    .app-shell {
+      width: min(100%, 720px);
+      margin: 0 auto;
+      min-height: 100vh;
+      padding: 18px 16px calc(28px + env(safe-area-inset-bottom));
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 4px 2px 16px;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .brand-mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      color: var(--rose-deep);
+      letter-spacing: .08em;
+    }
+
+    .brand-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--rose), var(--beige));
+      box-shadow: 0 0 0 5px rgba(184,132,136,.10);
+    }
+
+    .screen { display: none; animation: fadeUp .42s ease both; }
+    .screen.active { display: block; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card {
+      background: rgba(255, 253, 249, .93);
+      border: 1px solid rgba(126, 99, 94, .10);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero {
+      padding: 34px 24px 28px;
+      position: relative;
+      isolation: isolate;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      z-index: -1;
+      filter: blur(.2px);
+    }
+    .hero::before {
+      width: 180px; height: 180px;
+      background: rgba(225, 198, 201, .30);
+      right: -74px; top: -60px;
+    }
+    .hero::after {
+      width: 120px; height: 120px;
+      background: rgba(224, 213, 194, .42);
+      left: -45px; bottom: 40px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 14px;
+      color: var(--rose-deep);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      margin-bottom: 14px;
+      font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+      font-size: clamp(31px, 8.6vw, 48px);
+      line-height: 1.25;
+      letter-spacing: .02em;
+      font-weight: 600;
+    }
+
+    .hero-copy {
+      color: var(--muted);
+      margin-bottom: 24px;
+      font-size: 15px;
+    }
+
+    .mini-facts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin: 20px 0 26px;
+    }
+
+    .mini-fact {
+      text-align: center;
+      padding: 11px 6px;
+      border-radius: 16px;
+      background: rgba(239, 225, 220, .55);
+      color: var(--rose-deep);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .primary-btn, .secondary-btn, .ghost-btn {
+      appearance: none;
+      width: 100%;
+      min-height: 56px;
+      border-radius: 18px;
+      border: 0;
+      cursor: pointer;
+      transition: transform .16s ease, box-shadow .16s ease, opacity .16s ease;
+      font-weight: 800;
+      letter-spacing: .03em;
+    }
+    .primary-btn {
+      background: linear-gradient(135deg, var(--rose-deep), #a87379);
+      color: #fff;
+      box-shadow: 0 12px 25px rgba(141, 98, 103, .22);
+    }
+    .secondary-btn {
+      background: #fff;
+      color: var(--rose-deep);
+      border: 1px solid rgba(141, 98, 103, .20);
+    }
+    .ghost-btn {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--line);
+    }
+    .primary-btn:active, .secondary-btn:active, .ghost-btn:active { transform: scale(.985); }
+
+    .note {
+      margin: 16px 2px 0;
+      color: var(--muted);
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .quiz-card { padding: 20px 18px 18px; }
+
+    .progress-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .progress-track {
+      flex: 1;
+      height: 7px;
+      background: #eee5df;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, var(--rose), var(--rose-deep));
+      border-radius: inherit;
+      transition: width .35s ease;
+    }
+    .progress-text {
+      min-width: 48px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: right;
+    }
+
+    .question-kicker {
+      color: var(--rose-deep);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      margin-bottom: 8px;
+    }
+    .question-title {
+      font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+      font-size: 24px;
+      line-height: 1.45;
+      margin-bottom: 8px;
+    }
+    .question-note {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+
+    .options { display: grid; gap: 10px; }
+    .option-btn {
+      appearance: none;
+      width: 100%;
+      min-height: 62px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 13px 14px;
+      text-align: left;
+      cursor: pointer;
+      transition: border-color .2s ease, background .2s ease, transform .15s ease;
+    }
+    .option-btn:hover { border-color: rgba(141, 98, 103, .32); }
+    .option-btn:active { transform: scale(.99); }
+    .option-btn.selected {
+      border-color: rgba(141, 98, 103, .62);
+      background: rgba(234, 214, 216, .38);
+    }
+    .option-icon {
+      width: 38px; height: 38px;
+      flex: 0 0 38px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: #f6efeb;
+      font-size: 18px;
+    }
+    .option-text strong { display: block; font-size: 15px; }
+    .option-text small { display: block; color: var(--muted); margin-top: 2px; }
+
+    .quiz-nav {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .quiz-nav .primary-btn:disabled { opacity: .38; cursor: default; box-shadow: none; }
+
+    .analyzing {
+      min-height: 70vh;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 30px 20px;
+    }
+    .scan-orb {
+      width: 150px; height: 150px;
+      margin: 0 auto 26px;
+      border-radius: 50%;
+      position: relative;
+      background:
+        radial-gradient(circle at 35% 28%, #fff 0 9%, transparent 10%),
+        radial-gradient(circle, #ead4d6 0 35%, #d9babd 36% 62%, #b88388 63% 100%);
+      box-shadow: 0 24px 55px rgba(141, 98, 103, .20);
+      animation: breathe 1.5s ease-in-out infinite;
+    }
+    .scan-orb::after {
+      content: "";
+      position: absolute;
+      inset: -14px;
+      border: 1px solid rgba(184,132,136,.35);
+      border-radius: 50%;
+      animation: ring 1.5s ease-out infinite;
+    }
+    @keyframes breathe { 50% { transform: scale(1.035); } }
+    @keyframes ring { from { transform: scale(.92); opacity: .8; } to { transform: scale(1.12); opacity: 0; } }
+
+    .analysis-lines {
+      display: grid;
+      gap: 8px;
+      margin: 20px auto 0;
+      width: min(100%, 360px);
+    }
+    .analysis-line {
+      height: 8px;
+      border-radius: 999px;
+      background: #eee3dc;
+      overflow: hidden;
+    }
+    .analysis-line::after {
+      content: "";
+      display: block;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, var(--rose), transparent);
+      animation: scan 1.05s linear infinite;
+    }
+    @keyframes scan { from { transform: translateX(-120%); } to { transform: translateX(240%); } }
+
+    .result-wrap { display: grid; gap: 16px; }
+    .result-hero {
+      padding: 26px 20px 22px;
+      background:
+        radial-gradient(circle at 100% 0, rgba(238,213,215,.65), transparent 32%),
+        linear-gradient(180deg, #fffdf9, #fbf5f0);
+    }
+
+    .result-label {
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: .08em;
+      margin-bottom: 7px;
+    }
+    .result-title {
+      font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+      font-size: clamp(30px, 8vw, 44px);
+      line-height: 1.28;
+      margin-bottom: 8px;
+      color: var(--rose-deep);
+    }
+    .result-catch {
+      font-size: 15px;
+      margin-bottom: 18px;
+    }
+    .subtype-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: rgba(157,160,139,.14);
+      color: #72745f;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .score-panel {
+      display: grid;
+      gap: 12px;
+      padding: 18px 0 2px;
+    }
+    .score-row {
+      display: grid;
+      grid-template-columns: 94px 1fr 34px;
+      gap: 10px;
+      align-items: center;
+      font-size: 12px;
+    }
+    .score-row strong { font-size: 12px; }
+    .score-bar { height: 8px; border-radius: 999px; background: #eee5df; overflow: hidden; }
+    .score-bar i { display: block; height: 100%; background: linear-gradient(90deg, var(--rose-soft), var(--rose-deep)); border-radius: inherit; }
+    .score-row em { font-style: normal; color: var(--muted); text-align: right; }
+
+    .section-card { padding: 22px 18px; }
+    .section-title {
+      font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+      font-size: 21px;
+      margin-bottom: 8px;
+    }
+    .section-lead { color: var(--muted); font-size: 13px; margin-bottom: 18px; }
+
+    .product-list { display: grid; gap: 12px; }
+    .product-card {
+      display: grid;
+      grid-template-columns: 88px 1fr;
+      gap: 13px;
+      border-radius: 20px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      position: relative;
+    }
+    .product-card.primary-product {
+      border-color: rgba(141,98,103,.35);
+      background: linear-gradient(135deg, rgba(238,218,220,.34), #fff 46%);
+    }
+    .product-rank {
+      display: inline-flex;
+      margin-bottom: 5px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: #f4ebe7;
+      color: var(--rose-deep);
+      font-size: 10px;
+      font-weight: 800;
+    }
+    .product-art {
+      height: 112px;
+      border-radius: 16px;
+      background: linear-gradient(145deg, #f1e7e1, #fbf7f3);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      color: var(--muted);
+      text-align: center;
+      font-size: 10px;
+      padding: 8px;
+    }
+    .product-art img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    .product-card h4 { margin: 0 0 3px; font-size: 15px; }
+    .product-meta { color: var(--rose-deep); font-size: 12px; font-weight: 700; margin-bottom: 5px; }
+    .product-card p { color: var(--muted); font-size: 12px; line-height: 1.6; margin-bottom: 0; }
+
+    .routine {
+      display: grid;
+      gap: 10px;
+      counter-reset: routine;
+    }
+    .routine-step {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 10px;
+      align-items: start;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .routine-step:last-child { border-bottom: 0; }
+    .routine-step::before {
+      counter-increment: routine;
+      content: counter(routine);
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      display: grid; place-items: center;
+      background: #f1e5e2;
+      color: var(--rose-deep);
+      font-weight: 800;
+      font-size: 12px;
+    }
+    .routine-step strong { display: block; font-size: 14px; }
+    .routine-step span { color: var(--muted); font-size: 12px; }
+
+    .massage-grid { display: grid; gap: 10px; }
+    .massage-step {
+      padding: 14px;
+      border-radius: 17px;
+      background: #f8f2ed;
+    }
+    .massage-step b { color: var(--rose-deep); font-size: 13px; }
+    .massage-step p { color: var(--muted); font-size: 12px; margin: 4px 0 0; }
+
+    .share-card {
+      text-align: center;
+      padding: 26px 18px;
+      background: linear-gradient(145deg, rgba(234,214,216,.54), rgba(255,253,249,.92));
+    }
+    .share-quote {
+      font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+      font-size: 22px;
+      color: var(--rose-deep);
+      margin: 12px 0 16px;
+    }
+    .button-stack { display: grid; gap: 9px; margin-top: 14px; }
+
+    .disclaimer {
+      color: var(--muted);
+      font-size: 10px;
+      line-height: 1.6;
+      text-align: center;
+      padding: 4px 12px;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: calc(22px + env(safe-area-inset-bottom));
+      transform: translate(-50%, 16px);
+      width: min(calc(100% - 32px), 520px);
+      padding: 12px 16px;
+      border-radius: 16px;
+      background: rgba(61, 51, 49, .94);
+      color: #fff;
+      font-size: 13px;
+      text-align: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: .25s ease;
+      z-index: 50;
+    }
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (min-width: 640px) {
+      .app-shell { padding-top: 28px; }
+      .hero { padding: 46px 42px 40px; }
+      .quiz-card, .section-card, .result-hero { padding-left: 30px; padding-right: 30px; }
+      .product-card { grid-template-columns: 110px 1fr; padding: 14px; }
+      .product-art { height: 132px; }
+      .massage-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="app-shell">
+    <div class="brand">
+      <span class="brand-mark"><span class="brand-dot"></span>Hair & Scalp Beauty Check</span>
+      <span>約1分</span>
+    </div>
+
+    <section id="startScreen" class="screen active">
+      <div class="card hero">
+        <p class="eyebrow">✦ 髪からのサインを見つける7問</p>
+        <h1>今のあなたの髪、<br>何を求めてる？</h1>
+        <p class="hero-copy">鏡を見るたびに気になることを、直感で選ぶだけ。今の髪と頭皮に優先したいケアを、資料の内容をもとにご案内します。</p>
+
+        <div class="mini-facts">
+          <div class="mini-fact">全7問</div>
+          <div class="mini-fact">結果8タイプ</div>
+          <div class="mini-fact">シェアOK</div>
+        </div>
+
+        <button class="primary-btn" id="startBtn">診断をはじめる</button>
+        <p class="note">商品をたくさん並べるのではなく、「まず使うならこれ」を優先して表示します。</p>
+      </div>
+    </section>
+
+    <section id="quizScreen" class="screen">
+      <div class="card quiz-card">
+        <div class="progress-row">
+          <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+          <div class="progress-text" id="progressText">1 / 7</div>
+        </div>
+
+        <p class="question-kicker" id="questionKicker">QUESTION 1</p>
+        <h2 class="question-title" id="questionTitle"></h2>
+        <p class="question-note" id="questionNote"></p>
+        <div class="options" id="options"></div>
+
+        <div class="quiz-nav">
+          <button class="ghost-btn" id="backBtn">戻る</button>
+          <button class="primary-btn" id="nextBtn" disabled>次へ</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="analyzeScreen" class="screen">
+      <div class="card analyzing">
+        <div>
+          <div class="scan-orb" aria-hidden="true"></div>
+          <p class="eyebrow" style="justify-content:center">BEAUTY CHECK</p>
+          <h2 style="font-family:'Hiragino Mincho ProN','Yu Mincho',serif; font-size:26px; margin-bottom:8px;">髪からのサインを整理しています…</h2>
+          <p style="color:var(--muted); font-size:13px;">回答から、いま優先したいケアを選んでいます。</p>
+          <div class="analysis-lines"><div class="analysis-line"></div><div class="analysis-line"></div><div class="analysis-line"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="resultScreen" class="screen">
+      <div class="result-wrap">
+        <div class="card result-hero" id="shareCapture">
+          <p class="result-label">あなたの髪と頭皮が、今必要としているケアは…</p>
+          <h2 class="result-title" id="resultTitle"></h2>
+          <p class="result-catch" id="resultCatch"></p>
+          <span class="subtype-chip" id="subtypeChip"></span>
+          <div class="score-panel" id="scorePanel"></div>
+          <p class="note" style="text-align:left;margin-top:10px;">※数値は回答から算出した「ケア優先度」の目安です。</p>
+        </div>
+
+        <div class="card section-card">
+          <h3 class="section-title">今の状態と、ケアの考え方</h3>
+          <p class="section-lead" id="resultReason"></p>
+          <div id="priorityCare"></div>
+        </div>
+
+        <div class="card section-card">
+          <p class="eyebrow">YOUR CARE PICKS</p>
+          <h3 class="section-title">まず使うなら、これ</h3>
+          <p class="section-lead">おすすめは最大3点。資料に記載された対応関係だけを使って選んでいます。</p>
+          <div class="product-list" id="productList"></div>
+        </div>
+
+        <div class="card section-card">
+          <h3 class="section-title">使う順番</h3>
+          <p class="section-lead">毎日の流れに入れやすい順番でまとめました。</p>
+          <div class="routine" id="routine"></div>
+        </div>
+
+        <div class="card section-card">
+          <h3 class="section-title">1分の頭皮セルフケア</h3>
+          <p class="section-lead">資料の頭皮マッサージを、スマホで見ながらできる形にしました。</p>
+          <div class="massage-grid">
+            <div class="massage-step"><b>01 前頭部</b><p>おでこの生え際から、指の腹で小刻みにほぐしながら頭頂部へ。</p></div>
+            <div class="massage-step"><b>02 側頭部</b><p>こめかみ周辺から、やさしく小刻みに動かしながら頭頂部へ。</p></div>
+            <div class="massage-step"><b>03 後頭部</b><p>首の付け根から後頭部をほぐし、少しずつ頭頂部へ。</p></div>
+          </div>
+        </div>
+
+        <div class="card share-card">
+          <p class="eyebrow" style="justify-content:center">SHARE YOUR TYPE</p>
+          <div class="share-quote" id="shareQuote"></div>
+          <p class="section-lead">結果カードをスクショしてもOK。友だちは何タイプ？</p>
+          <div class="button-stack">
+            <button class="primary-btn" id="shareBtn">結果をシェアする</button>
+            <button class="secondary-btn" id="consultBtn">このケアを相談する</button>
+            <button class="ghost-btn" id="restartBtn">もう一度診断する</button>
+          </div>
+        </div>
+
+        <p class="disclaimer">この診断は美容上のセルフケアの目安を楽しむためのもので、医療上の診断ではありません。頭皮や髪に強い症状や急な変化がある場合は、適切な専門家へご相談ください。</p>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    // =========================================================
+    // ここだけ変えれば、サロン情報・LINEリンク・画像を変更できます
+    // =========================================================
+    const CONFIG = {
+      salonName: "あなたのサロン名",
+      lineUrl: "", // 例: https://lin.ee/XXXXXXXX  後から入れてください
+      shareTitle: "髪と頭皮のセルフケア診断"
+    };
+
+    // =========================================================
+    // 商品データ（資料に記載された内容だけで構成）
+    // 商品写真は、同じファイル名で images/products/ に置けば自動表示
+    // =========================================================
+    const PRODUCTS = {
+      headCleansing: {
+        name: "ウェルヘッドクレンジング",
+        meta: "200ml / 2,420円（税込）",
+        image: "images/products/well-head-cleansing.png",
+        role: "毛穴の汚れを落とし、頭皮を健やかに保つ頭皮用クレンジング。"
+      },
+      shampoo: {
+        name: "ウェルシャンプー",
+        meta: "400g / 2,750円（税込）",
+        image: "images/products/well-shampoo.png",
+        role: "低刺激性成分で髪をやさしく洗い上げる。カラーの色落ちが気になるときのケアにも。"
+      },
+      treatment: {
+        name: "ウェルトリートメント",
+        meta: "200g / 2,750円（税込）",
+        image: "images/products/well-treatment.png",
+        role: "傷んだ髪をコーティングしながらパサつきを抑え、枝毛・切れ毛のケアにも。"
+      },
+      wellHair: {
+        name: "ウェルヘアー（養毛料）",
+        meta: "120g / 5,280円（税込）",
+        image: "images/products/well-hair.png",
+        role: "頭皮にうるおいを与え、頭皮環境を整える。ボリューム、生え際、分け目、白髪、ハリ・コシが気になるときのケアに。"
+      },
+      hairOil: {
+        name: "ヘアオイル",
+        meta: "100ml / 3,080円（税込）",
+        image: "images/products/hair-oil.png",
+        role: "髪にツヤとうるおいを与え、パサつきやうねりが気になる髪をしなやかに整える。"
+      }
+    };
+
+    // =========================================================
+    // 診断タイプ：8種類
+    // =========================================================
+    const TYPES = {
+      moisture: {
+        title: "うるおいヴェールタイプ",
+        catch: "今は“足すケア”を。毛先まで、しっとりしなやかな印象へ。",
+        reason: "パサつきや傷みのサインが目立つ回答でした。資料では、やさしく洗い、トリートメントで髪をコーティングし、オイルでツヤとうるおいを補う組み合わせが案内されています。",
+        priority: "優先したいのは、毛先を守りながらうるおいを補うこと。まずはトリートメントを軸にして、仕上げにヘアオイルを。",
+        products: ["treatment", "hairOil", "shampoo"],
+        metrics: { "うるおいケア": 92, "頭皮ケア": 38, "根元ケア": 30, "保護ケア": 84 }
+      },
+      smooth: {
+        title: "まとまりシルクタイプ",
+        catch: "湿気の日も、髪の流れを味方につける“まとまりケア”を。",
+        reason: "湿気によるうねりやまとまりにくさが気になっているようです。資料では、毛穴の汚れを落とす頭皮ケアと、髪の乾燥を抑えながら素早く整えるヘアオイルが案内されています。",
+        priority: "頭皮をすっきり整えたうえで、毛先はヘアオイルでしなやかに。重くしすぎず、まとまりやすい状態を目指すケアです。",
+        products: ["hairOil", "headCleansing"],
+        metrics: { "うるおいケア": 78, "頭皮ケア": 64, "根元ケア": 34, "保護ケア": 72 }
+      },
+      scalpClean: {
+        title: "さらりスカルプリセットタイプ",
+        catch: "頭皮を一度リセット。すっきりした土台から美髪ケアを。",
+        reason: "ベタつきや臭いなど、頭皮の“落とすケア”を優先したい回答でした。資料では、ウェルヘッドクレンジングで毛穴の汚れを落とし、ウェルヘアーで頭皮環境を整えるケアが案内されています。",
+        priority: "まずは頭皮の汚れをすっきり落とすこと。その後に頭皮へうるおいを与えるケアを重ねます。",
+        products: ["headCleansing", "wellHair"],
+        metrics: { "うるおいケア": 42, "頭皮ケア": 96, "根元ケア": 67, "保護ケア": 32 }
+      },
+      scalpMoisture: {
+        title: "モイスチャースカルプタイプ",
+        catch: "髪だけじゃなく、頭皮にも“うるおい習慣”を。",
+        reason: "頭皮の乾燥が気になる回答でした。資料では、ウェルヘッドクレンジングで毛穴の汚れを落とし、ウェルヘアーで頭皮にうるおいを与えて頭皮環境を整えるケアが案内されています。",
+        priority: "頭皮を清潔に保ちながら、乾燥させっぱなしにしないこと。ウェルヘアーを中心にした頭皮ケアを。",
+        products: ["wellHair", "headCleansing"],
+        metrics: { "うるおいケア": 74, "頭皮ケア": 91, "根元ケア": 63, "保護ケア": 30 }
+      },
+      color: {
+        title: "カラーキープタイプ",
+        catch: "せっかくのカラーを、毎日の洗う・守るで長く楽しむ。",
+        reason: "カラーの色落ちを気にしている回答でした。資料では、ウェルシャンプーでカラー成分を落としすぎないよう洗い、ウェルトリートメントでドライヤーの熱から髪を保護するケアが案内されています。",
+        priority: "カラー後は“洗いすぎない・熱から守る”を意識。毎日使うシャンプーを最優先に。",
+        products: ["shampoo", "treatment"],
+        metrics: { "うるおいケア": 68, "頭皮ケア": 42, "根元ケア": 28, "保護ケア": 95 }
+      },
+      blackHair: {
+        title: "黒髪グロウタイプ",
+        catch: "地肌から、豊かな黒髪の美しさを引き立てるケアへ。",
+        reason: "白髪が気になる回答でした。資料では、ウェルヘアーを使い、豊かな黒髪の美しさを地肌から引き立てるケアが案内されています。",
+        priority: "毛先だけでなく、地肌をケアする習慣を主役に。毎日の頭皮ケアを続けやすい形に整えます。",
+        products: ["wellHair"],
+        metrics: { "うるおいケア": 48, "頭皮ケア": 78, "根元ケア": 88, "保護ケア": 34 }
+      },
+      volume: {
+        title: "ふんわりルートタイプ",
+        catch: "視線は毛先から根元へ。トップの印象を支える地肌ケア。",
+        reason: "髪のボリューム、生え際、分け目が気になる回答でした。資料では、ウェルヘアーによる養毛成分のケアが案内されています。",
+        priority: "今は根元と地肌を優先。ウェルヘアーを中心に、頭皮マッサージも一緒に取り入れるのがおすすめです。",
+        products: ["wellHair"],
+        metrics: { "うるおいケア": 38, "頭皮ケア": 74, "根元ケア": 98, "保護ケア": 30 }
+      },
+      strength: {
+        title: "しなやかストレングスタイプ",
+        catch: "ハリ・コシと毛先のしなやかさ。髪の“守る力”を整える。",
+        reason: "ハリ・コシの低下や枝毛・切れ毛など、髪のしなやかさを守りたい回答でした。資料では、ハリ・コシには頭皮クレンジングとウェルヘアー、枝毛・切れ毛にはトリートメントとヘアオイルが案内されています。",
+        priority: "根元のハリ・コシが中心なら頭皮ケア、枝毛・切れ毛が中心なら毛先の保護を優先します。",
+        products: ["headCleansing", "wellHair", "treatment"],
+        metrics: { "うるおいケア": 70, "頭皮ケア": 69, "根元ケア": 76, "保護ケア": 82 }
+      }
+    };
+
+    // =========================================================
+    // 質問データ
+    // scores に加点先を記載。flags は結果の微調整用。
+    // =========================================================
+    const QUESTIONS = [
+      {
+        title: "鏡を見たとき、いちばん最初に気になるのは？",
+        note: "“今いちばん気になる”に近いものをひとつ。",
+        options: [
+          { icon: "✦", label: "毛先のパサつき・ツヤ不足", scores: { moisture: 3 } },
+          { icon: "↝", label: "うねり・まとまりにくさ", scores: { smooth: 3 } },
+          { icon: "◌", label: "トップのボリューム", scores: { volume: 3 } },
+          { icon: "♢", label: "頭皮の状態", scores: { scalpClean: 1, scalpMoisture: 1 } }
+        ]
+      },
+      {
+        title: "毛先を触ったとき、近い感覚は？",
+        note: "指通りを思い出して選んでください。",
+        options: [
+          { icon: "≈", label: "乾燥してパサつく", scores: { moisture: 3 }, flag: "dryEnds" },
+          { icon: "◇", label: "傷みが気になる", scores: { moisture: 2, strength: 1 }, flag: "damage" },
+          { icon: "✂", label: "枝毛・切れ毛が気になる", scores: { strength: 3 }, flag: "breakage" },
+          { icon: "○", label: "毛先はあまり気にならない", scores: {} }
+        ]
+      },
+      {
+        title: "湿気の多い日は、髪がどうなりやすい？",
+        note: "雨の日や蒸し暑い日をイメージして。",
+        options: [
+          { icon: "〰", label: "うねりが目立つ", scores: { smooth: 3 } },
+          { icon: "☁", label: "広がってまとまりにくい", scores: { smooth: 2, moisture: 1 } },
+          { icon: "⌁", label: "乾燥感だけが気になる", scores: { moisture: 2 } },
+          { icon: "○", label: "特に変わらない", scores: {} }
+        ]
+      },
+      {
+        title: "頭皮で気になることは？",
+        note: "髪ではなく“地肌”の感覚で選びます。",
+        options: [
+          { icon: "☼", label: "乾燥する感じがある", scores: { scalpMoisture: 4 }, flag: "scalpDry" },
+          { icon: "◍", label: "ベタつき・臭いが気になる", scores: { scalpClean: 4 }, flag: "scalpOil" },
+          { icon: "⇄", label: "乾燥もベタつきも気になる", scores: { scalpMoisture: 2, scalpClean: 2 }, flag: "scalpMixed" },
+          { icon: "○", label: "特に気にならない", scores: {} }
+        ]
+      },
+      {
+        title: "カラーや白髪について、近いのは？",
+        note: "今の見た目で気になる方を。",
+        options: [
+          { icon: "▧", label: "カラーの色落ちが気になる", scores: { color: 4 }, flag: "colorFade" },
+          { icon: "✧", label: "白髪が気になる", scores: { blackHair: 4 }, flag: "whiteHair" },
+          { icon: "◈", label: "どちらも気になる", scores: { color: 2, blackHair: 2 }, flag: "colorAndWhite" },
+          { icon: "○", label: "どちらも気にならない", scores: {} }
+        ]
+      },
+      {
+        title: "根元まわりで、変化を感じる？",
+        note: "以前と比べて気になるものを選んでください。",
+        options: [
+          { icon: "↑", label: "ボリュームが減ってきた", scores: { volume: 4 }, flag: "volumeDown" },
+          { icon: "⌒", label: "生え際や分け目が気になる", scores: { volume: 4 }, flag: "parting" },
+          { icon: "↘", label: "抜け毛が増えた気がする", scores: { strength: 2, volume: 1 }, flag: "hairFall" },
+          { icon: "○", label: "特に変化は感じない", scores: {} }
+        ]
+      },
+      {
+        title: "今の髪に、いちばん欲しいものは？",
+        note: "最後は直感で。結果の優先順位に反映します。",
+        options: [
+          { icon: "💧", label: "うるおい・ツヤ", scores: { moisture: 2, smooth: 1 } },
+          { icon: "🌿", label: "すっきり健やかな頭皮", scores: { scalpClean: 2, scalpMoisture: 1 } },
+          { icon: "✦", label: "ハリ・コシ・ふんわり感", scores: { volume: 2, strength: 2 }, flag: "body" },
+          { icon: "♢", label: "カラーや見た目の美しさ", scores: { color: 1, blackHair: 1 } }
+        ]
+      }
+    ];
+
+    // =========================================================
+    // アプリ状態
+    // =========================================================
+    const state = {
+      current: 0,
+      answers: Array(QUESTIONS.length).fill(null),
+      result: null
+    };
+
+    const $ = (id) => document.getElementById(id);
+    const screens = ["startScreen", "quizScreen", "analyzeScreen", "resultScreen"];
+
+    function showScreen(id) {
+      screens.forEach(s => $(s).classList.toggle("active", s === id));
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function renderQuestion() {
+      const q = QUESTIONS[state.current];
+      const chosen = state.answers[state.current];
+      $("questionKicker").textContent = `QUESTION ${state.current + 1}`;
+      $("questionTitle").textContent = q.title;
+      $("questionNote").textContent = q.note;
+      $("progressText").textContent = `${state.current + 1} / ${QUESTIONS.length}`;
+      $("progressFill").style.width = `${((state.current + 1) / QUESTIONS.length) * 100}%`;
+      $("backBtn").disabled = state.current === 0;
+      $("nextBtn").textContent = state.current === QUESTIONS.length - 1 ? "結果を見る" : "次へ";
+      $("nextBtn").disabled = chosen === null;
+
+      $("options").innerHTML = q.options.map((opt, index) => `
+        <button class="option-btn ${chosen === index ? "selected" : ""}" data-index="${index}">
+          <span class="option-icon" aria-hidden="true">${opt.icon}</span>
+          <span class="option-text"><strong>${opt.label}</strong></span>
+        </button>
+      `).join("");
+
+      $("options").querySelectorAll(".option-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          state.answers[state.current] = Number(btn.dataset.index);
+          renderQuestion();
+        });
+      });
+    }
+
+    function calculateResult() {
+      const scores = Object.fromEntries(Object.keys(TYPES).map(k => [k, 0]));
+      const flags = new Set();
+
+      state.answers.forEach((answerIndex, qIndex) => {
+        if (answerIndex === null) return;
+        const answer = QUESTIONS[qIndex].options[answerIndex];
+        Object.entries(answer.scores || {}).forEach(([key, value]) => scores[key] += value);
+        if (answer.flag) flags.add(answer.flag);
+      });
+
+      // 全部ほぼニュートラルでも、最後の希望から必ず結果を返す
+      if (Math.max(...Object.values(scores)) === 0) scores.moisture = 1;
+
+      const ranked = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+      const mainKey = ranked[0][0];
+      const subKey = ranked.find(([key, value]) => key !== mainKey && value > 0)?.[0] || null;
+
+      // strengthタイプは、資料の該当悩みに合わせて商品を微調整
+      let productKeys = [...TYPES[mainKey].products];
+      if (mainKey === "strength") {
+        if (flags.has("breakage")) {
+          productKeys = ["treatment", "hairOil", "headCleansing"];
+        } else {
+          productKeys = ["headCleansing", "wellHair", "treatment"];
+        }
+      }
+
+      return { mainKey, subKey, scores, flags, productKeys };
+    }
+
+    function normalizedMetrics(typeKey, rawScores) {
+      const base = { ...TYPES[typeKey].metrics };
+      const maxScore = Math.max(...Object.values(rawScores), 1);
+      // 回答傾向を少しだけ反映し、タイプ固定の見た目になりすぎないようにする
+      const bump = Math.min(8, Math.round((rawScores[typeKey] / maxScore) * 8));
+      const first = Object.keys(base)[0];
+      base[first] = Math.min(99, base[first] + bump);
+      return base;
+    }
+
+    function careRoutine(productKeys) {
+      const order = ["headCleansing", "shampoo", "treatment", "wellHair", "hairOil"];
+      const labels = {
+        headCleansing: ["頭皮クレンジング", "シャンプー前の頭皮ケアとして。毛穴の汚れをすっきり落とす。"],
+        shampoo: ["シャンプー", "髪と頭皮をやさしく洗う。"],
+        treatment: ["トリートメント", "洗髪後の髪をコーティングし、毛先を守る。"],
+        wellHair: ["頭皮用の養毛ケア", "清潔な頭皮に使い、頭皮環境を整えるケアへ。"],
+        hairOil: ["仕上げのヘアオイル", "毛先を中心に、ツヤとうるおいを補う。"]
+      };
+      return order.filter(k => productKeys.includes(k)).map(k => labels[k]);
+    }
+
+    function renderResult() {
+      const r = state.result;
+      const type = TYPES[r.mainKey];
+      const sub = r.subKey ? TYPES[r.subKey] : null;
+
+      $("resultTitle").textContent = type.title;
+      $("resultCatch").textContent = type.catch;
+      $("subtypeChip").textContent = sub ? `＋ あわせてケアしたい：${sub.title}` : "今はこのケアを最優先";
+      $("resultReason").textContent = type.reason;
+      $("priorityCare").innerHTML = `<div class="massage-step"><b>優先したいケア</b><p>${type.priority}</p></div>`;
+      $("shareQuote").textContent = `私は「${type.title}」でした。`;
+
+      const metrics = normalizedMetrics(r.mainKey, r.scores);
+      $("scorePanel").innerHTML = Object.entries(metrics).map(([label, value]) => `
+        <div class="score-row">
+          <strong>${label}</strong>
+          <div class="score-bar"><i style="width:${value}%"></i></div>
+          <em>${value}</em>
+        </div>
+      `).join("");
+
+      const ranks = ["まず使うならこれ", "一緒に使うなら", "必要に応じてプラス"];
+      $("productList").innerHTML = r.productKeys.slice(0,3).map((key, index) => {
+        const p = PRODUCTS[key];
+        return `
+          <article class="product-card ${index === 0 ? "primary-product" : ""}">
+            <div class="product-art">
+              <img src="${p.image}" alt="${p.name}" onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend','<span>PRODUCT PHOTO<br>${p.name}</span>')">
+            </div>
+            <div>
+              <span class="product-rank">${ranks[index]}</span>
+              <h4>${p.name}</h4>
+              <div class="product-meta">${p.meta}</div>
+              <p>${p.role}</p>
+            </div>
+          </article>
+        `;
+      }).join("");
+
+      const routine = careRoutine(r.productKeys);
+      $("routine").innerHTML = routine.map(([title, desc]) => `
+        <div class="routine-step"><div><strong>${title}</strong><span>${desc}</span></div></div>
+      `).join("");
+    }
+
+    function showToast(message) {
+      const t = $("toast");
+      t.textContent = message;
+      t.classList.add("show");
+      clearTimeout(showToast.timer);
+      showToast.timer = setTimeout(() => t.classList.remove("show"), 2300);
+    }
+
+    async function shareResult() {
+      const type = TYPES[state.result.mainKey];
+      const text = `私は「${type.title}」でした。\n約1分の髪と頭皮のセルフケア診断。あなたは何タイプ？`;
+      const data = { title: CONFIG.shareTitle, text, url: location.href };
+      try {
+        if (navigator.share) {
+          await navigator.share(data);
+        } else {
+          await navigator.clipboard.writeText(`${text}\n${location.href}`);
+          showToast("シェア用テキストをコピーしました");
+        }
+      } catch (e) {
+        if (e?.name !== "AbortError") showToast("シェアを完了できませんでした");
+      }
+    }
+
+    async function consult() {
+      const type = TYPES[state.result.mainKey];
+      const msg = `診断で「${type.title}」が出ました。おすすめケアについて相談したいです。`;
+      if (CONFIG.lineUrl) {
+        try { await navigator.clipboard.writeText(msg); } catch (_) {}
+        window.open(CONFIG.lineUrl, "_blank", "noopener");
+        showToast("相談メッセージをコピーしました。LINEに貼り付けてください");
+      } else {
+        try {
+          await navigator.clipboard.writeText(msg);
+          showToast("相談文をコピーしました。CONFIG.lineUrl に公式LINEのURLを設定できます");
+        } catch (_) {
+          showToast("CONFIG.lineUrl に公式LINEのURLを設定してください");
+        }
+      }
+    }
+
+    function restart() {
+      state.current = 0;
+      state.answers = Array(QUESTIONS.length).fill(null);
+      state.result = null;
+      renderQuestion();
+      showScreen("startScreen");
+    }
+
+    $("startBtn").addEventListener("click", () => {
+      state.current = 0;
+      renderQuestion();
+      showScreen("quizScreen");
+    });
+
+    $("backBtn").addEventListener("click", () => {
+      if (state.current > 0) {
+        state.current -= 1;
+        renderQuestion();
+      }
+    });
+
+    $("nextBtn").addEventListener("click", () => {
+      if (state.answers[state.current] === null) return;
+      if (state.current < QUESTIONS.length - 1) {
+        state.current += 1;
+        renderQuestion();
+      } else {
+        state.result = calculateResult();
+        showScreen("analyzeScreen");
+        setTimeout(() => {
+          renderResult();
+          showScreen("resultScreen");
+        }, 1800);
+      }
+    });
+
+    $("shareBtn").addEventListener("click", shareResult);
+    $("consultBtn").addEventListener("click", consult);
+    $("restartBtn").addEventListener("click", restart);
+  </script>
+</body>
+</html>
