@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#f8f3ee" />
-  <meta name="description" content="約1分でわかる、髪と頭皮のセルフケア診断。" />
+  <meta name="description" content="約2分でわかる、髪と頭皮のセルフケア診断。" />
   <title>髪と頭皮のセルフケア診断</title>
   <style>
     :root {
@@ -31,7 +31,8 @@
         radial-gradient(circle at 12% -8%, rgba(219, 187, 191, .32), transparent 30%),
         radial-gradient(circle at 100% 18%, rgba(230, 218, 199, .42), transparent 28%),
         var(--bg);
-      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN",
+        "Yu Gothic", "Noto Sans JP", sans-serif;
       line-height: 1.7;
       min-height: 100vh;
     }
@@ -77,6 +78,7 @@
 
     .screen { display: none; animation: fadeUp .42s ease both; }
     .screen.active { display: block; }
+
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
@@ -104,15 +106,21 @@
       z-index: -1;
       filter: blur(.2px);
     }
+
     .hero::before {
-      width: 180px; height: 180px;
+      width: 180px;
+      height: 180px;
       background: rgba(225, 198, 201, .30);
-      right: -74px; top: -60px;
+      right: -74px;
+      top: -60px;
     }
+
     .hero::after {
-      width: 120px; height: 120px;
+      width: 120px;
+      height: 120px;
       background: rgba(224, 213, 194, .42);
-      left: -45px; bottom: 40px;
+      left: -45px;
+      bottom: 40px;
     }
 
     .eyebrow {
@@ -127,6 +135,7 @@
     }
 
     h1, h2, h3, p { margin-top: 0; }
+
     h1 {
       margin-bottom: 14px;
       font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
@@ -170,22 +179,28 @@
       font-weight: 800;
       letter-spacing: .03em;
     }
+
     .primary-btn {
       background: linear-gradient(135deg, var(--rose-deep), #a87379);
       color: #fff;
       box-shadow: 0 12px 25px rgba(141, 98, 103, .22);
     }
+
     .secondary-btn {
       background: #fff;
       color: var(--rose-deep);
       border: 1px solid rgba(141, 98, 103, .20);
     }
+
     .ghost-btn {
       background: transparent;
       color: var(--muted);
       border: 1px solid var(--line);
     }
-    .primary-btn:active, .secondary-btn:active, .ghost-btn:active { transform: scale(.985); }
+
+    .primary-btn:active, .secondary-btn:active, .ghost-btn:active {
+      transform: scale(.985);
+    }
 
     .note {
       margin: 16px 2px 0;
@@ -202,6 +217,7 @@
       gap: 12px;
       margin-bottom: 18px;
     }
+
     .progress-track {
       flex: 1;
       height: 7px;
@@ -209,6 +225,7 @@
       border-radius: 999px;
       overflow: hidden;
     }
+
     .progress-fill {
       height: 100%;
       width: 0;
@@ -216,6 +233,7 @@
       border-radius: inherit;
       transition: width .35s ease;
     }
+
     .progress-text {
       min-width: 48px;
       color: var(--muted);
@@ -230,19 +248,25 @@
       letter-spacing: .08em;
       margin-bottom: 8px;
     }
+
     .question-title {
       font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
       font-size: 24px;
       line-height: 1.45;
       margin-bottom: 8px;
     }
+
     .question-note {
       color: var(--muted);
       font-size: 13px;
       margin-bottom: 18px;
     }
 
-    .options { display: grid; gap: 10px; }
+    .options {
+      display: grid;
+      gap: 10px;
+    }
+
     .option-btn {
       appearance: none;
       width: 100%;
@@ -259,14 +283,18 @@
       cursor: pointer;
       transition: border-color .2s ease, background .2s ease, transform .15s ease;
     }
+
     .option-btn:hover { border-color: rgba(141, 98, 103, .32); }
     .option-btn:active { transform: scale(.99); }
+
     .option-btn.selected {
       border-color: rgba(141, 98, 103, .62);
       background: rgba(234, 214, 216, .38);
     }
+
     .option-icon {
-      width: 38px; height: 38px;
+      width: 38px;
+      height: 38px;
       flex: 0 0 38px;
       border-radius: 50%;
       display: grid;
@@ -274,8 +302,18 @@
       background: #f6efeb;
       font-size: 18px;
     }
-    .option-text strong { display: block; font-size: 15px; }
-    .option-text small { display: block; color: var(--muted); margin-top: 2px; }
+
+    .option-text strong {
+      display: block;
+      font-size: 15px;
+    }
+
+    .option-text small {
+      display: block;
+      color: var(--muted);
+      margin-top: 2px;
+      line-height: 1.5;
+    }
 
     .quiz-nav {
       display: grid;
@@ -283,7 +321,17 @@
       gap: 10px;
       margin-top: 18px;
     }
-    .quiz-nav .primary-btn:disabled { opacity: .38; cursor: default; box-shadow: none; }
+
+    .quiz-nav .primary-btn:disabled {
+      opacity: .38;
+      cursor: default;
+      box-shadow: none;
+    }
+
+    .quiz-nav .ghost-btn:disabled {
+      opacity: .35;
+      cursor: default;
+    }
 
     .analyzing {
       min-height: 70vh;
@@ -292,8 +340,10 @@
       text-align: center;
       padding: 30px 20px;
     }
+
     .scan-orb {
-      width: 150px; height: 150px;
+      width: 150px;
+      height: 150px;
       margin: 0 auto 26px;
       border-radius: 50%;
       position: relative;
@@ -303,6 +353,7 @@
       box-shadow: 0 24px 55px rgba(141, 98, 103, .20);
       animation: breathe 1.5s ease-in-out infinite;
     }
+
     .scan-orb::after {
       content: "";
       position: absolute;
@@ -311,8 +362,12 @@
       border-radius: 50%;
       animation: ring 1.5s ease-out infinite;
     }
+
     @keyframes breathe { 50% { transform: scale(1.035); } }
-    @keyframes ring { from { transform: scale(.92); opacity: .8; } to { transform: scale(1.12); opacity: 0; } }
+    @keyframes ring {
+      from { transform: scale(.92); opacity: .8; }
+      to { transform: scale(1.12); opacity: 0; }
+    }
 
     .analysis-lines {
       display: grid;
@@ -320,12 +375,14 @@
       margin: 20px auto 0;
       width: min(100%, 360px);
     }
+
     .analysis-line {
       height: 8px;
       border-radius: 999px;
       background: #eee3dc;
       overflow: hidden;
     }
+
     .analysis-line::after {
       content: "";
       display: block;
@@ -334,9 +391,17 @@
       background: linear-gradient(90deg, transparent, var(--rose), transparent);
       animation: scan 1.05s linear infinite;
     }
-    @keyframes scan { from { transform: translateX(-120%); } to { transform: translateX(240%); } }
 
-    .result-wrap { display: grid; gap: 16px; }
+    @keyframes scan {
+      from { transform: translateX(-120%); }
+      to { transform: translateX(240%); }
+    }
+
+    .result-wrap {
+      display: grid;
+      gap: 16px;
+    }
+
     .result-hero {
       padding: 26px 20px 22px;
       background:
@@ -350,6 +415,7 @@
       letter-spacing: .08em;
       margin-bottom: 7px;
     }
+
     .result-title {
       font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
       font-size: clamp(30px, 8vw, 44px);
@@ -357,10 +423,77 @@
       margin-bottom: 8px;
       color: var(--rose-deep);
     }
+
     .result-catch {
       font-size: 15px;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
     }
+
+    .goal-box {
+      margin: 12px 0 16px;
+      padding: 13px 14px;
+      border-radius: 17px;
+      background: rgba(239, 225, 220, .48);
+      border: 1px solid rgba(141,98,103,.08);
+    }
+
+    .goal-box b {
+      display: block;
+      color: var(--rose-deep);
+      font-size: 11px;
+      letter-spacing: .06em;
+      margin-bottom: 3px;
+    }
+
+    .goal-box span {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .result-visual {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      margin: 14px 0 14px;
+      border-radius: 22px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 24% 30%, rgba(255,255,255,.92), transparent 22%),
+        linear-gradient(135deg, #ead6d8, #e9ded1 62%, #f8f3ee);
+      border: 1px solid rgba(141,98,103,.10);
+    }
+
+    .result-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .result-visual-fallback {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      text-align: center;
+      color: var(--rose-deep);
+    }
+
+    .result-visual-fallback strong {
+      display: block;
+      font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+      font-size: 20px;
+      margin-bottom: 4px;
+    }
+
+    .result-visual-fallback small {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
     .subtype-chip {
       display: inline-flex;
       align-items: center;
@@ -378,6 +511,7 @@
       gap: 12px;
       padding: 18px 0 2px;
     }
+
     .score-row {
       display: grid;
       grid-template-columns: 94px 1fr 34px;
@@ -385,20 +519,68 @@
       align-items: center;
       font-size: 12px;
     }
-    .score-row strong { font-size: 12px; }
-    .score-bar { height: 8px; border-radius: 999px; background: #eee5df; overflow: hidden; }
-    .score-bar i { display: block; height: 100%; background: linear-gradient(90deg, var(--rose-soft), var(--rose-deep)); border-radius: inherit; }
-    .score-row em { font-style: normal; color: var(--muted); text-align: right; }
 
-    .section-card { padding: 22px 18px; }
+    .score-row strong { font-size: 12px; }
+
+    .score-bar {
+      height: 8px;
+      border-radius: 999px;
+      background: #eee5df;
+      overflow: hidden;
+    }
+
+    .score-bar i {
+      display: block;
+      height: 100%;
+      background: linear-gradient(90deg, var(--rose-soft), var(--rose-deep));
+      border-radius: inherit;
+      transition: width .6s ease .15s;
+    }
+
+    .score-row em {
+      font-style: normal;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    .section-card {
+      padding: 22px 18px;
+    }
+
     .section-title {
       font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
       font-size: 21px;
       margin-bottom: 8px;
     }
-    .section-lead { color: var(--muted); font-size: 13px; margin-bottom: 18px; }
 
-    .product-list { display: grid; gap: 12px; }
+    .section-lead {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+
+    .priority-box {
+      padding: 14px;
+      border-radius: 17px;
+      background: #f8f2ed;
+    }
+
+    .priority-box b {
+      color: var(--rose-deep);
+      font-size: 13px;
+    }
+
+    .priority-box p {
+      color: var(--muted);
+      font-size: 12px;
+      margin: 4px 0 0;
+    }
+
+    .product-list {
+      display: grid;
+      gap: 12px;
+    }
+
     .product-card {
       display: grid;
       grid-template-columns: 88px 1fr;
@@ -409,10 +591,12 @@
       background: #fff;
       position: relative;
     }
+
     .product-card.primary-product {
       border-color: rgba(141,98,103,.35);
       background: linear-gradient(135deg, rgba(238,218,220,.34), #fff 46%);
     }
+
     .product-rank {
       display: inline-flex;
       margin-bottom: 5px;
@@ -423,6 +607,7 @@
       font-size: 10px;
       font-weight: 800;
     }
+
     .product-art {
       height: 112px;
       border-radius: 16px;
@@ -435,16 +620,39 @@
       font-size: 10px;
       padding: 8px;
     }
-    .product-art img { width: 100%; height: 100%; object-fit: contain; display: block; }
-    .product-card h4 { margin: 0 0 3px; font-size: 15px; }
-    .product-meta { color: var(--rose-deep); font-size: 12px; font-weight: 700; margin-bottom: 5px; }
-    .product-card p { color: var(--muted); font-size: 12px; line-height: 1.6; margin-bottom: 0; }
+
+    .product-art img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .product-card h4 {
+      margin: 0 0 3px;
+      font-size: 15px;
+    }
+
+    .product-meta {
+      color: var(--rose-deep);
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .product-card p {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
 
     .routine {
       display: grid;
       gap: 10px;
       counter-reset: routine;
     }
+
     .routine-step {
       display: grid;
       grid-template-columns: 34px 1fr;
@@ -453,42 +661,73 @@
       padding: 12px 0;
       border-bottom: 1px solid var(--line);
     }
+
     .routine-step:last-child { border-bottom: 0; }
+
     .routine-step::before {
       counter-increment: routine;
       content: counter(routine);
-      width: 32px; height: 32px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
-      display: grid; place-items: center;
+      display: grid;
+      place-items: center;
       background: #f1e5e2;
       color: var(--rose-deep);
       font-weight: 800;
       font-size: 12px;
     }
-    .routine-step strong { display: block; font-size: 14px; }
-    .routine-step span { color: var(--muted); font-size: 12px; }
 
-    .massage-grid { display: grid; gap: 10px; }
+    .routine-step strong {
+      display: block;
+      font-size: 14px;
+    }
+
+    .routine-step span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .massage-grid {
+      display: grid;
+      gap: 10px;
+    }
+
     .massage-step {
       padding: 14px;
       border-radius: 17px;
       background: #f8f2ed;
     }
-    .massage-step b { color: var(--rose-deep); font-size: 13px; }
-    .massage-step p { color: var(--muted); font-size: 12px; margin: 4px 0 0; }
+
+    .massage-step b {
+      color: var(--rose-deep);
+      font-size: 13px;
+    }
+
+    .massage-step p {
+      color: var(--muted);
+      font-size: 12px;
+      margin: 4px 0 0;
+    }
 
     .share-card {
       text-align: center;
       padding: 26px 18px;
       background: linear-gradient(145deg, rgba(234,214,216,.54), rgba(255,253,249,.92));
     }
+
     .share-quote {
       font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
       font-size: 22px;
       color: var(--rose-deep);
       margin: 12px 0 16px;
     }
-    .button-stack { display: grid; gap: 9px; margin-top: 14px; }
+
+    .button-stack {
+      display: grid;
+      gap: 9px;
+      margin-top: 14px;
+    }
 
     .disclaimer {
       color: var(--muted);
@@ -515,19 +754,33 @@
       transition: .25s ease;
       z-index: 50;
     }
-    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
 
     @media (min-width: 640px) {
       .app-shell { padding-top: 28px; }
       .hero { padding: 46px 42px 40px; }
-      .quiz-card, .section-card, .result-hero { padding-left: 30px; padding-right: 30px; }
-      .product-card { grid-template-columns: 110px 1fr; padding: 14px; }
+      .quiz-card, .section-card, .result-hero {
+        padding-left: 30px;
+        padding-right: 30px;
+      }
+      .product-card {
+        grid-template-columns: 110px 1fr;
+        padding: 14px;
+      }
       .product-art { height: 132px; }
       .massage-grid { grid-template-columns: repeat(3, 1fr); }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+      *, *::before, *::after {
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+      }
     }
   </style>
 </head>
@@ -535,31 +788,36 @@
   <main class="app-shell">
     <div class="brand">
       <span class="brand-mark"><span class="brand-dot"></span>Hair & Scalp Beauty Check</span>
-      <span>約1分</span>
+      <span>約2分</span>
     </div>
 
     <section id="startScreen" class="screen active">
       <div class="card hero">
-        <p class="eyebrow">✦ 髪からのサインを見つける7問</p>
-        <h1>今のあなたの髪、<br>何を求めてる？</h1>
-        <p class="hero-copy">鏡を見るたびに気になることを、直感で選ぶだけ。今の髪と頭皮に優先したいケアを、資料の内容をもとにご案内します。</p>
+        <p class="eyebrow">✦ 髪からのサインを見つける9問</p>
+        <h1>今のあなたの髪、<br>何がいちばん気になる？</h1>
+        <p class="hero-copy">
+          髪と頭皮の状態だけでなく、「いちばん気になること」と
+          「これから髪に求めること」まで含めて、あなた向けのケアを整理します。
+        </p>
 
         <div class="mini-facts">
-          <div class="mini-fact">全7問</div>
-          <div class="mini-fact">結果8タイプ</div>
+          <div class="mini-fact">全9問</div>
+          <div class="mini-fact">最優先を反映</div>
           <div class="mini-fact">シェアOK</div>
         </div>
 
         <button class="primary-btn" id="startBtn">診断をはじめる</button>
-        <p class="note">商品をたくさん並べるのではなく、「まず使うならこれ」を優先して表示します。</p>
+        <p class="note">第一推奨は、あなたが選んだ「いちばん気になること」を最優先して表示します。</p>
       </div>
     </section>
 
     <section id="quizScreen" class="screen">
       <div class="card quiz-card">
         <div class="progress-row">
-          <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
-          <div class="progress-text" id="progressText">1 / 7</div>
+          <div class="progress-track">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <div class="progress-text" id="progressText">1 / 9</div>
         </div>
 
         <p class="question-kicker" id="questionKicker">QUESTION 1</p>
@@ -579,9 +837,17 @@
         <div>
           <div class="scan-orb" aria-hidden="true"></div>
           <p class="eyebrow" style="justify-content:center">BEAUTY CHECK</p>
-          <h2 style="font-family:'Hiragino Mincho ProN','Yu Mincho',serif; font-size:26px; margin-bottom:8px;">髪からのサインを整理しています…</h2>
-          <p style="color:var(--muted); font-size:13px;">回答から、いま優先したいケアを選んでいます。</p>
-          <div class="analysis-lines"><div class="analysis-line"></div><div class="analysis-line"></div><div class="analysis-line"></div></div>
+          <h2 style="font-family:'Hiragino Mincho ProN','Yu Mincho',serif;font-size:26px;margin-bottom:8px;">
+            髪からのサインを整理しています…
+          </h2>
+          <p style="color:var(--muted);font-size:13px;">
+            一番気になることを軸に、今の状態とこれからの希望を重ねています。
+          </p>
+          <div class="analysis-lines">
+            <div class="analysis-line"></div>
+            <div class="analysis-line"></div>
+            <div class="analysis-line"></div>
+          </div>
         </div>
       </div>
     </section>
@@ -589,12 +855,31 @@
     <section id="resultScreen" class="screen">
       <div class="result-wrap">
         <div class="card result-hero" id="shareCapture">
-          <p class="result-label">あなたの髪と頭皮が、今必要としているケアは…</p>
+          <p class="result-label">あなたの髪と頭皮の診断結果</p>
           <h2 class="result-title" id="resultTitle"></h2>
           <p class="result-catch" id="resultCatch"></p>
+
+          <div class="goal-box">
+            <b>あなたが髪に求めていること</b>
+            <span id="resultGoal"></span>
+          </div>
+
+          <div class="result-visual" id="resultVisual">
+            <img id="resultImage" src="" alt="" />
+            <div class="result-visual-fallback" id="resultImageFallback">
+              <div>
+                <strong id="resultImageLabel"></strong>
+                <small>RESULT IMAGE / 後から写真を差し替えられます</small>
+              </div>
+            </div>
+          </div>
+
           <span class="subtype-chip" id="subtypeChip"></span>
+
           <div class="score-panel" id="scorePanel"></div>
-          <p class="note" style="text-align:left;margin-top:10px;">※数値は回答から算出した「ケア優先度」の目安です。</p>
+          <p class="note" style="text-align:left;margin-top:10px;">
+            ※数値は回答から算出した「ケア優先度」の目安です。医療的な数値ではありません。
+          </p>
         </div>
 
         <div class="card section-card">
@@ -606,30 +891,43 @@
         <div class="card section-card">
           <p class="eyebrow">YOUR CARE PICKS</p>
           <h3 class="section-title">まず使うなら、これ</h3>
-          <p class="section-lead">おすすめは最大3点。資料に記載された対応関係だけを使って選んでいます。</p>
+          <p class="section-lead" id="productLead">
+            あなたが「一番気になる」と答えた悩みを最優先に選んでいます。
+          </p>
           <div class="product-list" id="productList"></div>
         </div>
 
         <div class="card section-card">
           <h3 class="section-title">使う順番</h3>
-          <p class="section-lead">毎日の流れに入れやすい順番でまとめました。</p>
+          <p class="section-lead" id="routineLead">毎日の流れに入れやすい順番でまとめました。</p>
           <div class="routine" id="routine"></div>
         </div>
 
         <div class="card section-card">
           <h3 class="section-title">1分の頭皮セルフケア</h3>
           <p class="section-lead">資料の頭皮マッサージを、スマホで見ながらできる形にしました。</p>
+
           <div class="massage-grid">
-            <div class="massage-step"><b>01 前頭部</b><p>おでこの生え際から、指の腹で小刻みにほぐしながら頭頂部へ。</p></div>
-            <div class="massage-step"><b>02 側頭部</b><p>こめかみ周辺から、やさしく小刻みに動かしながら頭頂部へ。</p></div>
-            <div class="massage-step"><b>03 後頭部</b><p>首の付け根から後頭部をほぐし、少しずつ頭頂部へ。</p></div>
+            <div class="massage-step">
+              <b>01 前頭部</b>
+              <p>おでこの生え際から、指の腹で小刻みにほぐしながら頭頂部へ。</p>
+            </div>
+            <div class="massage-step">
+              <b>02 側頭部</b>
+              <p>こめかみ周辺から、やさしく小刻みに動かしながら頭頂部へ。</p>
+            </div>
+            <div class="massage-step">
+              <b>03 後頭部</b>
+              <p>首の付け根から後頭部をほぐし、少しずつ頭頂部へ。</p>
+            </div>
           </div>
         </div>
 
         <div class="card share-card">
-          <p class="eyebrow" style="justify-content:center">SHARE YOUR TYPE</p>
+          <p class="eyebrow" style="justify-content:center">SHARE YOUR RESULT</p>
           <div class="share-quote" id="shareQuote"></div>
-          <p class="section-lead">結果カードをスクショしてもOK。友だちは何タイプ？</p>
+          <p class="section-lead">結果カードをスクショしてもOK。友だちは何が一番気になる？</p>
+
           <div class="button-stack">
             <button class="primary-btn" id="shareBtn">結果をシェアする</button>
             <button class="secondary-btn" id="consultBtn">このケアを相談する</button>
@@ -637,7 +935,10 @@
           </div>
         </div>
 
-        <p class="disclaimer">この診断は美容上のセルフケアの目安を楽しむためのもので、医療上の診断ではありません。頭皮や髪に強い症状や急な変化がある場合は、適切な専門家へご相談ください。</p>
+        <p class="disclaimer">
+          この診断は美容上のセルフケアの目安を楽しむためのもので、医療上の診断ではありません。
+          頭皮や髪に強い症状や急な変化がある場合は、適切な専門家へご相談ください。
+        </p>
       </div>
     </section>
   </main>
@@ -646,24 +947,30 @@
 
   <script>
     // =========================================================
-    // ここだけ変えれば、サロン情報・LINEリンク・画像を変更できます
+    // ★ 有子ちゃんがあとから変更する場所は、基本ここだけ ★
     // =========================================================
     const CONFIG = {
       salonName: "あなたのサロン名",
-      lineUrl: "", // 例: https://lin.ee/XXXXXXXX  後から入れてください
+
+      // 公式LINEのURLを入れる
+      lineUrl: "",
+
+      // 公開済み診断アプリのURL
+      appUrl: "https://nactsaloneze-hue.github.io/hair-scalp-check/",
+
       shareTitle: "髪と頭皮のセルフケア診断"
     };
 
     // =========================================================
-    // 商品データ（資料に記載された内容だけで構成）
-    // 商品写真は、同じファイル名で images/products/ に置けば自動表示
+    // 商品データ
+    // 商品写真は images/products/ に下記ファイル名で置けば自動表示
     // =========================================================
     const PRODUCTS = {
       headCleansing: {
         name: "ウェルヘッドクレンジング",
         meta: "200ml / 2,420円（税込）",
         image: "images/products/well-head-cleansing.png",
-        role: "毛穴の汚れを落とし、頭皮を健やかに保つ頭皮用クレンジング。"
+        role: "毛穴の汚れを落とす頭皮用クレンジング。頭皮のベタつき・臭い、うねり、ハリ・コシが気になるときのケアに。"
       },
       shampoo: {
         name: "ウェルシャンプー",
@@ -675,7 +982,7 @@
         name: "ウェルトリートメント",
         meta: "200g / 2,750円（税込）",
         image: "images/products/well-treatment.png",
-        role: "傷んだ髪をコーティングしながらパサつきを抑え、枝毛・切れ毛のケアにも。"
+        role: "傷んだ髪をコーティングしながらパサつきを抑え、枝毛・切れ毛が気になる髪のケアにも。"
       },
       wellHair: {
         name: "ウェルヘアー（養毛料）",
@@ -692,148 +999,241 @@
     };
 
     // =========================================================
-    // 診断タイプ：8種類
+    // 「一番気になること」ごとの診断結果
+    // mainProducts の先頭が必ず「まず使うならこれ」になる
+    // resultImage は images/results/ の画像を差し替えるだけで変更可能
     // =========================================================
-    const TYPES = {
-      moisture: {
-        title: "うるおいヴェールタイプ",
-        catch: "今は“足すケア”を。毛先まで、しっとりしなやかな印象へ。",
-        reason: "パサつきや傷みのサインが目立つ回答でした。資料では、やさしく洗い、トリートメントで髪をコーティングし、オイルでツヤとうるおいを補う組み合わせが案内されています。",
-        priority: "優先したいのは、毛先を守りながらうるおいを補うこと。まずはトリートメントを軸にして、仕上げにヘアオイルを。",
-        products: ["treatment", "hairOil", "shampoo"],
-        metrics: { "うるおいケア": 92, "頭皮ケア": 38, "根元ケア": 30, "保護ケア": 84 }
+    const CONCERNS = {
+      dryness: {
+        title: "パサつき・乾燥",
+        resultCatch: "毛先の乾燥やツヤ不足が、今いちばん気になっているサインです。",
+        reason: "回答では、毛先のパサつきや乾燥が最優先でした。資料では、やさしく洗い、トリートメントで髪をコーティングし、ヘアオイルでツヤとうるおいを補うケアが案内されています。",
+        priority: "まずは毛先の乾燥とパサつきを中心に。洗う・守る・仕上げるの中でも、今は毛先を守るケアを優先します。",
+        mainProducts: ["treatment", "hairOil", "shampoo"],
+        resultImage: "images/results/dryness.jpg",
+        secondaryKey: "moisture",
+        careBoost: { moisture: 6, scalp: 0, root: 0, protect: 4 }
       },
-      smooth: {
-        title: "まとまりシルクタイプ",
-        catch: "湿気の日も、髪の流れを味方につける“まとまりケア”を。",
-        reason: "湿気によるうねりやまとまりにくさが気になっているようです。資料では、毛穴の汚れを落とす頭皮ケアと、髪の乾燥を抑えながら素早く整えるヘアオイルが案内されています。",
-        priority: "頭皮をすっきり整えたうえで、毛先はヘアオイルでしなやかに。重くしすぎず、まとまりやすい状態を目指すケアです。",
-        products: ["hairOil", "headCleansing"],
-        metrics: { "うるおいケア": 78, "頭皮ケア": 64, "根元ケア": 34, "保護ケア": 72 }
+      damage: {
+        title: "傷み・枝毛・切れ毛",
+        resultCatch: "毛先の傷みや切れやすさが、今いちばん気になっているサインです。",
+        reason: "回答では、髪の傷みや枝毛・切れ毛が最優先でした。資料では、ウェルトリートメントで髪をコーティングし、ヘアオイルでツヤとうるおいを与えて髪を保護するケアが案内されています。",
+        priority: "まずは毛先を守ることを主役に。トリートメントを軸に、必要に応じてヘアオイルを重ねます。",
+        mainProducts: ["treatment", "hairOil"],
+        resultImage: "images/results/damage.jpg",
+        secondaryKey: "strength",
+        careBoost: { moisture: 4, scalp: 0, root: 1, protect: 6 }
       },
-      scalpClean: {
-        title: "さらりスカルプリセットタイプ",
-        catch: "頭皮を一度リセット。すっきりした土台から美髪ケアを。",
-        reason: "ベタつきや臭いなど、頭皮の“落とすケア”を優先したい回答でした。資料では、ウェルヘッドクレンジングで毛穴の汚れを落とし、ウェルヘアーで頭皮環境を整えるケアが案内されています。",
-        priority: "まずは頭皮の汚れをすっきり落とすこと。その後に頭皮へうるおいを与えるケアを重ねます。",
-        products: ["headCleansing", "wellHair"],
-        metrics: { "うるおいケア": 42, "頭皮ケア": 96, "根元ケア": 67, "保護ケア": 32 }
+      wave: {
+        title: "うねり・まとまりにくさ",
+        resultCatch: "湿気によるうねりやまとまりにくさが、今いちばん気になっているサインです。",
+        reason: "回答では、うねり・まとまりにくさが最優先でした。資料では、ウェルヘッドクレンジングで毛穴の汚れを落とし、ヘアオイルで髪の乾燥を抑えながら整えるケアが案内されています。",
+        priority: "頭皮をすっきり整えつつ、毛先はヘアオイルでしなやかに。まとまりやすい状態を目指すケアです。",
+        mainProducts: ["hairOil", "headCleansing"],
+        resultImage: "images/results/wave.jpg",
+        secondaryKey: "smooth",
+        careBoost: { moisture: 4, scalp: 3, root: 1, protect: 3 }
       },
-      scalpMoisture: {
-        title: "モイスチャースカルプタイプ",
-        catch: "髪だけじゃなく、頭皮にも“うるおい習慣”を。",
-        reason: "頭皮の乾燥が気になる回答でした。資料では、ウェルヘッドクレンジングで毛穴の汚れを落とし、ウェルヘアーで頭皮にうるおいを与えて頭皮環境を整えるケアが案内されています。",
+      scalpDry: {
+        title: "頭皮の乾燥",
+        resultCatch: "頭皮の乾燥感が、今いちばん気になっているサインです。",
+        reason: "回答では、頭皮の乾燥が最優先でした。資料では、ウェルヘッドクレンジングで毛穴の汚れを落とし、ウェルヘアーで頭皮にうるおいを与えて頭皮環境を整えるケアが案内されています。",
         priority: "頭皮を清潔に保ちながら、乾燥させっぱなしにしないこと。ウェルヘアーを中心にした頭皮ケアを。",
-        products: ["wellHair", "headCleansing"],
-        metrics: { "うるおいケア": 74, "頭皮ケア": 91, "根元ケア": 63, "保護ケア": 30 }
+        mainProducts: ["wellHair", "headCleansing"],
+        resultImage: "images/results/scalp-dry.jpg",
+        secondaryKey: "scalpMoisture",
+        careBoost: { moisture: 4, scalp: 6, root: 2, protect: 0 }
+      },
+      scalpOil: {
+        title: "頭皮のベタつき・臭い",
+        resultCatch: "頭皮のベタつきや臭いが、今いちばん気になっているサインです。",
+        reason: "回答では、頭皮のベタつきや臭いが最優先でした。資料では、ウェルヘッドクレンジングで毛穴の汚れを落とし、ウェルヘアーで頭皮環境を整えるケアが案内されています。",
+        priority: "まずは頭皮の汚れを落とすケアを優先。その後に頭皮を整えるケアを重ねます。",
+        mainProducts: ["headCleansing", "wellHair"],
+        resultImage: "images/results/scalp-clean.jpg",
+        secondaryKey: "scalpClean",
+        careBoost: { moisture: 1, scalp: 6, root: 2, protect: 0 }
       },
       color: {
-        title: "カラーキープタイプ",
-        catch: "せっかくのカラーを、毎日の洗う・守るで長く楽しむ。",
-        reason: "カラーの色落ちを気にしている回答でした。資料では、ウェルシャンプーでカラー成分を落としすぎないよう洗い、ウェルトリートメントでドライヤーの熱から髪を保護するケアが案内されています。",
-        priority: "カラー後は“洗いすぎない・熱から守る”を意識。毎日使うシャンプーを最優先に。",
-        products: ["shampoo", "treatment"],
-        metrics: { "うるおいケア": 68, "頭皮ケア": 42, "根元ケア": 28, "保護ケア": 95 }
+        title: "カラーの色落ち",
+        resultCatch: "カラーをきれいに保ちたい気持ちが、今いちばん大きいようです。",
+        reason: "回答では、カラーの色落ちが最優先でした。資料では、ウェルシャンプーでカラー成分を落としすぎないよう洗い、ウェルトリートメントでドライヤーの熱から髪を保護するケアが案内されています。",
+        priority: "毎日使うシャンプーを最優先に。洗うケアと、熱から守るトリートメントを組み合わせます。",
+        mainProducts: ["shampoo", "treatment"],
+        resultImage: "images/results/color.jpg",
+        secondaryKey: "color",
+        careBoost: { moisture: 2, scalp: 1, root: 0, protect: 6 }
       },
-      blackHair: {
-        title: "黒髪グロウタイプ",
-        catch: "地肌から、豊かな黒髪の美しさを引き立てるケアへ。",
-        reason: "白髪が気になる回答でした。資料では、ウェルヘアーを使い、豊かな黒髪の美しさを地肌から引き立てるケアが案内されています。",
-        priority: "毛先だけでなく、地肌をケアする習慣を主役に。毎日の頭皮ケアを続けやすい形に整えます。",
-        products: ["wellHair"],
-        metrics: { "うるおいケア": 48, "頭皮ケア": 78, "根元ケア": 88, "保護ケア": 34 }
+      gray: {
+        title: "白髪",
+        resultCatch: "白髪が、今いちばん気になっているサインです。",
+        reason: "回答では、白髪が最優先でした。資料では、ウェルヘアーを使い、豊かな黒髪の美しさを地肌から引き立てるケアが案内されています。",
+        priority: "毛先よりも、まず地肌のケアを主役に。白髪が一番気になる場合は、ウェルヘアーを第一推奨にします。",
+        mainProducts: ["wellHair"],
+        resultImage: "images/results/gray-hair.jpg",
+        secondaryKey: "blackHair",
+        careBoost: { moisture: 1, scalp: 5, root: 6, protect: 0 }
       },
       volume: {
-        title: "ふんわりルートタイプ",
-        catch: "視線は毛先から根元へ。トップの印象を支える地肌ケア。",
-        reason: "髪のボリューム、生え際、分け目が気になる回答でした。資料では、ウェルヘアーによる養毛成分のケアが案内されています。",
-        priority: "今は根元と地肌を優先。ウェルヘアーを中心に、頭皮マッサージも一緒に取り入れるのがおすすめです。",
-        products: ["wellHair"],
-        metrics: { "うるおいケア": 38, "頭皮ケア": 74, "根元ケア": 98, "保護ケア": 30 }
+        title: "ボリューム・生え際・分け目",
+        resultCatch: "根元のボリュームや生え際・分け目が、今いちばん気になっているサインです。",
+        reason: "回答では、髪のボリューム、生え際、分け目が最優先でした。資料では、ウェルヘアーによる地肌からのケアが案内されています。",
+        priority: "今は毛先よりも根元と地肌を優先。ウェルヘアーを中心に、頭皮マッサージも取り入れます。",
+        mainProducts: ["wellHair"],
+        resultImage: "images/results/volume.jpg",
+        secondaryKey: "volume",
+        careBoost: { moisture: 1, scalp: 4, root: 6, protect: 0 }
       },
       strength: {
-        title: "しなやかストレングスタイプ",
-        catch: "ハリ・コシと毛先のしなやかさ。髪の“守る力”を整える。",
-        reason: "ハリ・コシの低下や枝毛・切れ毛など、髪のしなやかさを守りたい回答でした。資料では、ハリ・コシには頭皮クレンジングとウェルヘアー、枝毛・切れ毛にはトリートメントとヘアオイルが案内されています。",
-        priority: "根元のハリ・コシが中心なら頭皮ケア、枝毛・切れ毛が中心なら毛先の保護を優先します。",
-        products: ["headCleansing", "wellHair", "treatment"],
-        metrics: { "うるおいケア": 70, "頭皮ケア": 69, "根元ケア": 76, "保護ケア": 82 }
+        title: "ハリ・コシ不足",
+        resultCatch: "髪のハリ・コシの低下が、今いちばん気になっているサインです。",
+        reason: "回答では、ハリ・コシの低下が最優先でした。資料では、ウェルヘッドクレンジングで毛穴の汚れを落とし、ウェルヘアーで頭皮環境を整えるケアが案内されています。",
+        priority: "根元と地肌を中心に。頭皮クレンジングとウェルヘアーを組み合わせるケアを優先します。",
+        mainProducts: ["wellHair", "headCleansing"],
+        resultImage: "images/results/strength.jpg",
+        secondaryKey: "strength",
+        careBoost: { moisture: 2, scalp: 4, root: 5, protect: 2 }
       }
     };
 
     // =========================================================
-    // 質問データ
-    // scores に加点先を記載。flags は結果の微調整用。
+    // 「髪に求めること」
+    // 診断の主結果や第一推奨商品は変えず、伝え方と商品数に反映
+    // =========================================================
+    const GOALS = {
+      youthful: {
+        label: "今より若々しい印象に見せたい",
+        message: "今の悩みを整えながら、髪全体の印象をすっきり見せるケアを意識しましょう。"
+      },
+      styling: {
+        label: "いろいろなヘアアレンジを楽しみたい",
+        message: "扱いやすさも意識しながら、今いちばん気になる悩みを優先して整えていきましょう。"
+      },
+      simple: {
+        label: "ヘアケアにあまり時間と手間をかけたくない",
+        message: "続けやすさを最優先にして、まず必要度の高いものから少数に絞って始めるのがおすすめです。",
+        maxProducts: 2
+      },
+      polished: {
+        label: "まとまりとツヤのある髪でいたい",
+        message: "今の悩みをケアしながら、毎日の仕上がりも整えやすい流れにします。"
+      },
+      volume: {
+        label: "ふんわりボリューム感のある印象にしたい",
+        message: "毛先だけでなく、根元や頭皮のケアも意識しながら整えていきましょう。"
+      },
+      scalp: {
+        label: "頭皮からきちんとケアしたい",
+        message: "頭皮の状態も含めて、毎日のケアを組み立てます。"
+      },
+      color: {
+        label: "カラーをきれいに楽しみたい",
+        message: "今の悩みを優先しつつ、カラーを楽しみやすい洗う・守るケアも意識します。"
+      }
+    };
+
+    // =========================================================
+    // 質問データ：全9問
+    // Q1の primaryConcern が診断結果と第一推奨を決める
+    // Q9の goal が「なりたい姿」と提案の見せ方に反映される
     // =========================================================
     const QUESTIONS = [
       {
-        title: "鏡を見たとき、いちばん最初に気になるのは？",
-        note: "“今いちばん気になる”に近いものをひとつ。",
+        title: "今、髪や頭皮で「一番」気になっていることは？",
+        note: "ここだけは優先順位を決める大事な質問。ひとつ選んでください。",
         options: [
-          { icon: "✦", label: "毛先のパサつき・ツヤ不足", scores: { moisture: 3 } },
-          { icon: "↝", label: "うねり・まとまりにくさ", scores: { smooth: 3 } },
-          { icon: "◌", label: "トップのボリューム", scores: { volume: 3 } },
-          { icon: "♢", label: "頭皮の状態", scores: { scalpClean: 1, scalpMoisture: 1 } }
+          { icon: "💧", label: "パサつき・乾燥", primaryConcern: "dryness", scores: { moisture: 4 }, care: { moisture: 4, protect: 2 } },
+          { icon: "✂", label: "傷み・枝毛・切れ毛", primaryConcern: "damage", scores: { strength: 4 }, care: { moisture: 3, protect: 4 } },
+          { icon: "〰", label: "うねり・まとまりにくさ", primaryConcern: "wave", scores: { smooth: 4 }, care: { moisture: 3, scalp: 2, protect: 2 } },
+          { icon: "☼", label: "頭皮の乾燥", primaryConcern: "scalpDry", scores: { scalpMoisture: 4 }, care: { moisture: 3, scalp: 4 } },
+          { icon: "◍", label: "頭皮のベタつき・臭い", primaryConcern: "scalpOil", scores: { scalpClean: 4 }, care: { scalp: 4 } },
+          { icon: "▧", label: "カラーの色落ち", primaryConcern: "color", scores: { color: 4 }, care: { protect: 4 } },
+          { icon: "✧", label: "白髪", primaryConcern: "gray", scores: { blackHair: 4 }, care: { scalp: 3, root: 4 } },
+          { icon: "◌", label: "ボリューム・生え際・分け目", primaryConcern: "volume", scores: { volume: 4 }, care: { scalp: 3, root: 4 } },
+          { icon: "↑", label: "ハリ・コシ不足", primaryConcern: "strength", scores: { strength: 4 }, care: { scalp: 2, root: 4, protect: 1 } }
+        ]
+      },
+      {
+        title: "髪全体を見たとき、目につきやすいのは？",
+        note: "一番の悩みとは別に、普段ふと目につくものを選んでください。",
+        options: [
+          { icon: "✦", label: "毛先のパサつき・ツヤ不足", scores: { moisture: 3 }, care: { moisture: 3, protect: 2 } },
+          { icon: "↝", label: "うねり・まとまりにくさ", scores: { smooth: 3 }, care: { moisture: 2, scalp: 1, protect: 2 } },
+          { icon: "◌", label: "トップのボリューム", scores: { volume: 3 }, care: { scalp: 2, root: 3 } },
+          { icon: "♢", label: "頭皮の状態", scores: { scalpClean: 1, scalpMoisture: 1 }, care: { scalp: 3 } }
         ]
       },
       {
         title: "毛先を触ったとき、近い感覚は？",
         note: "指通りを思い出して選んでください。",
         options: [
-          { icon: "≈", label: "乾燥してパサつく", scores: { moisture: 3 }, flag: "dryEnds" },
-          { icon: "◇", label: "傷みが気になる", scores: { moisture: 2, strength: 1 }, flag: "damage" },
-          { icon: "✂", label: "枝毛・切れ毛が気になる", scores: { strength: 3 }, flag: "breakage" },
-          { icon: "○", label: "毛先はあまり気にならない", scores: {} }
+          { icon: "≈", label: "乾燥してパサつく", scores: { moisture: 3 }, care: { moisture: 3, protect: 1 }, flag: "dryEnds" },
+          { icon: "◇", label: "傷みが気になる", scores: { moisture: 2, strength: 1 }, care: { moisture: 2, protect: 3 }, flag: "damage" },
+          { icon: "✂", label: "枝毛・切れ毛が気になる", scores: { strength: 3 }, care: { moisture: 2, protect: 4 }, flag: "breakage" },
+          { icon: "○", label: "毛先はあまり気にならない", scores: {}, care: {} }
         ]
       },
       {
         title: "湿気の多い日は、髪がどうなりやすい？",
         note: "雨の日や蒸し暑い日をイメージして。",
         options: [
-          { icon: "〰", label: "うねりが目立つ", scores: { smooth: 3 } },
-          { icon: "☁", label: "広がってまとまりにくい", scores: { smooth: 2, moisture: 1 } },
-          { icon: "⌁", label: "乾燥感だけが気になる", scores: { moisture: 2 } },
-          { icon: "○", label: "特に変わらない", scores: {} }
+          { icon: "〰", label: "うねりが目立つ", scores: { smooth: 3 }, care: { moisture: 2, scalp: 1, protect: 2 } },
+          { icon: "☁", label: "広がってまとまりにくい", scores: { smooth: 2, moisture: 1 }, care: { moisture: 3, protect: 2 } },
+          { icon: "⌁", label: "乾燥感だけが気になる", scores: { moisture: 2 }, care: { moisture: 3 } },
+          { icon: "○", label: "特に変わらない", scores: {}, care: {} }
         ]
       },
       {
         title: "頭皮で気になることは？",
-        note: "髪ではなく“地肌”の感覚で選びます。",
+        note: "髪ではなく、地肌の感覚で選びます。",
         options: [
-          { icon: "☼", label: "乾燥する感じがある", scores: { scalpMoisture: 4 }, flag: "scalpDry" },
-          { icon: "◍", label: "ベタつき・臭いが気になる", scores: { scalpClean: 4 }, flag: "scalpOil" },
-          { icon: "⇄", label: "乾燥もベタつきも気になる", scores: { scalpMoisture: 2, scalpClean: 2 }, flag: "scalpMixed" },
-          { icon: "○", label: "特に気にならない", scores: {} }
+          { icon: "☼", label: "乾燥する感じがある", scores: { scalpMoisture: 4 }, care: { moisture: 2, scalp: 4 }, flag: "scalpDry" },
+          { icon: "◍", label: "ベタつき・臭いが気になる", scores: { scalpClean: 4 }, care: { scalp: 4 }, flag: "scalpOil" },
+          { icon: "⇄", label: "乾燥もベタつきも気になる", scores: { scalpMoisture: 2, scalpClean: 2 }, care: { moisture: 1, scalp: 4 }, flag: "scalpMixed" },
+          { icon: "○", label: "特に気にならない", scores: {}, care: {} }
         ]
       },
       {
         title: "カラーや白髪について、近いのは？",
         note: "今の見た目で気になる方を。",
         options: [
-          { icon: "▧", label: "カラーの色落ちが気になる", scores: { color: 4 }, flag: "colorFade" },
-          { icon: "✧", label: "白髪が気になる", scores: { blackHair: 4 }, flag: "whiteHair" },
-          { icon: "◈", label: "どちらも気になる", scores: { color: 2, blackHair: 2 }, flag: "colorAndWhite" },
-          { icon: "○", label: "どちらも気にならない", scores: {} }
+          { icon: "▧", label: "カラーの色落ちが気になる", scores: { color: 4 }, care: { protect: 4 }, flag: "colorFade" },
+          { icon: "✧", label: "白髪が気になる", scores: { blackHair: 4 }, care: { scalp: 3, root: 4 }, flag: "whiteHair" },
+          { icon: "◈", label: "どちらも気になる", scores: { color: 2, blackHair: 2 }, care: { scalp: 2, root: 2, protect: 3 }, flag: "colorAndWhite" },
+          { icon: "○", label: "どちらも気にならない", scores: {}, care: {} }
         ]
       },
       {
         title: "根元まわりで、変化を感じる？",
         note: "以前と比べて気になるものを選んでください。",
         options: [
-          { icon: "↑", label: "ボリュームが減ってきた", scores: { volume: 4 }, flag: "volumeDown" },
-          { icon: "⌒", label: "生え際や分け目が気になる", scores: { volume: 4 }, flag: "parting" },
-          { icon: "↘", label: "抜け毛が増えた気がする", scores: { strength: 2, volume: 1 }, flag: "hairFall" },
-          { icon: "○", label: "特に変化は感じない", scores: {} }
+          { icon: "↑", label: "ボリュームが減ってきた", scores: { volume: 4 }, care: { scalp: 2, root: 4 }, flag: "volumeDown" },
+          { icon: "⌒", label: "生え際や分け目が気になる", scores: { volume: 4 }, care: { scalp: 2, root: 4 }, flag: "parting" },
+          { icon: "↘", label: "抜け毛が増えた気がする", scores: { strength: 2, volume: 1 }, care: { scalp: 2, root: 3 }, flag: "hairFall" },
+          { icon: "○", label: "特に変化は感じない", scores: {}, care: {} }
         ]
       },
       {
         title: "今の髪に、いちばん欲しいものは？",
-        note: "最後は直感で。結果の優先順位に反映します。",
+        note: "ここはケアの方向性を知る質問です。",
         options: [
-          { icon: "💧", label: "うるおい・ツヤ", scores: { moisture: 2, smooth: 1 } },
-          { icon: "🌿", label: "すっきり健やかな頭皮", scores: { scalpClean: 2, scalpMoisture: 1 } },
-          { icon: "✦", label: "ハリ・コシ・ふんわり感", scores: { volume: 2, strength: 2 }, flag: "body" },
-          { icon: "♢", label: "カラーや見た目の美しさ", scores: { color: 1, blackHair: 1 } }
+          { icon: "💧", label: "うるおい・ツヤ", scores: { moisture: 2, smooth: 1 }, care: { moisture: 3, protect: 1 } },
+          { icon: "🌿", label: "すっきり健やかな頭皮", scores: { scalpClean: 2, scalpMoisture: 1 }, care: { scalp: 3 } },
+          { icon: "✦", label: "ハリ・コシ・ふんわり感", scores: { volume: 2, strength: 2 }, care: { scalp: 1, root: 3 }, flag: "body" },
+          { icon: "♢", label: "カラーや見た目の美しさ", scores: { color: 1, blackHair: 1 }, care: { protect: 2, root: 1 } }
+        ]
+      },
+      {
+        title: "最後に。これから髪に、いちばん求めることは？",
+        note: "商品を決めるためではなく、あなたが目指したい未来を結果に反映します。",
+        options: [
+          { icon: "✧", label: "今より若々しい印象に見せたい", goal: "youthful" },
+          { icon: "🎀", label: "いろいろなヘアアレンジを楽しみたい", goal: "styling" },
+          { icon: "◯", label: "ヘアケアにあまり時間と手間をかけたくない", goal: "simple" },
+          { icon: "◇", label: "まとまりとツヤのある髪でいたい", goal: "polished" },
+          { icon: "↑", label: "ふんわりボリューム感のある印象にしたい", goal: "volume" },
+          { icon: "🌿", label: "頭皮からきちんとケアしたい", goal: "scalp" },
+          { icon: "▧", label: "カラーをきれいに楽しみたい", goal: "color" }
         ]
       }
     ];
@@ -858,6 +1258,7 @@
     function renderQuestion() {
       const q = QUESTIONS[state.current];
       const chosen = state.answers[state.current];
+
       $("questionKicker").textContent = `QUESTION ${state.current + 1}`;
       $("questionTitle").textContent = q.title;
       $("questionNote").textContent = q.note;
@@ -870,7 +1271,10 @@
       $("options").innerHTML = q.options.map((opt, index) => `
         <button class="option-btn ${chosen === index ? "selected" : ""}" data-index="${index}">
           <span class="option-icon" aria-hidden="true">${opt.icon}</span>
-          <span class="option-text"><strong>${opt.label}</strong></span>
+          <span class="option-text">
+            <strong>${opt.label}</strong>
+            ${opt.sub ? `<small>${opt.sub}</small>` : ""}
+          </span>
         </button>
       `).join("");
 
@@ -882,73 +1286,196 @@
       });
     }
 
+    function addCare(target, care = {}) {
+      Object.entries(care).forEach(([key, value]) => {
+        target[key] = (target[key] || 0) + value;
+      });
+    }
+
+    function unique(list) {
+      return [...new Set(list)];
+    }
+
     function calculateResult() {
-      const scores = Object.fromEntries(Object.keys(TYPES).map(k => [k, 0]));
+      const scores = {
+        moisture: 0,
+        smooth: 0,
+        scalpClean: 0,
+        scalpMoisture: 0,
+        color: 0,
+        blackHair: 0,
+        volume: 0,
+        strength: 0
+      };
+
+      const careScores = {
+        moisture: 0,
+        scalp: 0,
+        root: 0,
+        protect: 0
+      };
+
       const flags = new Set();
+      let primaryConcern = null;
+      let goalKey = null;
 
       state.answers.forEach((answerIndex, qIndex) => {
         if (answerIndex === null) return;
         const answer = QUESTIONS[qIndex].options[answerIndex];
-        Object.entries(answer.scores || {}).forEach(([key, value]) => scores[key] += value);
+
+        Object.entries(answer.scores || {}).forEach(([key, value]) => {
+          scores[key] = (scores[key] || 0) + value;
+        });
+
+        addCare(careScores, answer.care || {});
+
         if (answer.flag) flags.add(answer.flag);
+        if (answer.primaryConcern) primaryConcern = answer.primaryConcern;
+        if (answer.goal) goalKey = answer.goal;
       });
 
-      // 全部ほぼニュートラルでも、最後の希望から必ず結果を返す
-      if (Math.max(...Object.values(scores)) === 0) scores.moisture = 1;
+      // 安全策。通常はQ1とQ9で必ず入る。
+      primaryConcern = primaryConcern || "dryness";
+      goalKey = goalKey || "polished";
 
+      const concern = CONCERNS[primaryConcern];
+      const goal = GOALS[goalKey];
+
+      // 一番気になる悩みをケア優先度にも強く反映
+      addCare(careScores, concern.careBoost);
+
+      // 副次的に気になる傾向を算出
       const ranked = Object.entries(scores).sort((a, b) => b[1] - a[1]);
-      const mainKey = ranked[0][0];
-      const subKey = ranked.find(([key, value]) => key !== mainKey && value > 0)?.[0] || null;
+      const subEntry = ranked.find(([key, value]) => key !== concern.secondaryKey && value > 0);
+      const subKey = subEntry ? subEntry[0] : null;
 
-      // strengthタイプは、資料の該当悩みに合わせて商品を微調整
-      let productKeys = [...TYPES[mainKey].products];
-      if (mainKey === "strength") {
-        if (flags.has("breakage")) {
-          productKeys = ["treatment", "hairOil", "headCleansing"];
-        } else {
-          productKeys = ["headCleansing", "wellHair", "treatment"];
-        }
-      }
+      // 第一推奨は「一番気になること」から固定。
+      // その後だけ回答全体から補助商品を足す。
+      const productKeys = [...concern.mainProducts];
 
-      return { mainKey, subKey, scores, flags, productKeys };
+      const secondaryProducts = {
+        moisture: ["treatment", "hairOil", "shampoo"],
+        smooth: ["hairOil", "headCleansing"],
+        scalpClean: ["headCleansing", "wellHair"],
+        scalpMoisture: ["wellHair", "headCleansing"],
+        color: ["shampoo", "treatment"],
+        blackHair: ["wellHair"],
+        volume: ["wellHair"],
+        strength: flags.has("breakage")
+          ? ["treatment", "hairOil"]
+          : ["wellHair", "headCleansing"]
+      };
+
+      ranked.forEach(([key, value]) => {
+        if (value <= 0) return;
+        (secondaryProducts[key] || []).forEach(p => productKeys.push(p));
+      });
+
+      const maxProducts = goal.maxProducts || 3;
+      const finalProducts = unique(productKeys).slice(0, maxProducts);
+
+      return {
+        primaryConcern,
+        goalKey,
+        scores,
+        careScores,
+        flags,
+        subKey,
+        productKeys: finalProducts
+      };
     }
 
-    function normalizedMetrics(typeKey, rawScores) {
-      const base = { ...TYPES[typeKey].metrics };
-      const maxScore = Math.max(...Object.values(rawScores), 1);
-      // 回答傾向を少しだけ反映し、タイプ固定の見た目になりすぎないようにする
-      const bump = Math.min(8, Math.round((rawScores[typeKey] / maxScore) * 8));
-      const first = Object.keys(base)[0];
-      base[first] = Math.min(99, base[first] + bump);
-      return base;
+    function normalizedCareMetrics(careScores) {
+      const labels = {
+        moisture: "うるおいケア",
+        scalp: "頭皮ケア",
+        root: "根元ケア",
+        protect: "保護ケア"
+      };
+
+      const values = Object.values(careScores);
+      const max = Math.max(...values, 1);
+
+      return Object.entries(careScores).map(([key, raw]) => {
+        const value = raw <= 0 ? 12 : Math.min(98, Math.round(18 + (raw / max) * 80));
+        return [labels[key], value];
+      });
+    }
+
+    function subConcernLabel(key) {
+      const labels = {
+        moisture: "パサつき・乾燥",
+        smooth: "うねり・まとまり",
+        scalpClean: "頭皮のベタつき・臭い",
+        scalpMoisture: "頭皮の乾燥",
+        color: "カラーの色落ち",
+        blackHair: "白髪",
+        volume: "ボリューム・根元",
+        strength: "ハリ・コシ・ダメージ"
+      };
+      return labels[key] || "";
     }
 
     function careRoutine(productKeys) {
       const order = ["headCleansing", "shampoo", "treatment", "wellHair", "hairOil"];
+
       const labels = {
-        headCleansing: ["頭皮クレンジング", "シャンプー前の頭皮ケアとして。毛穴の汚れをすっきり落とす。"],
-        shampoo: ["シャンプー", "髪と頭皮をやさしく洗う。"],
+        headCleansing: ["頭皮クレンジング", "シャンプー前の頭皮ケアとして。毛穴の汚れを落とす。"],
+        shampoo: ["シャンプー", "髪をやさしく洗う。"],
         treatment: ["トリートメント", "洗髪後の髪をコーティングし、毛先を守る。"],
         wellHair: ["頭皮用の養毛ケア", "清潔な頭皮に使い、頭皮環境を整えるケアへ。"],
         hairOil: ["仕上げのヘアオイル", "毛先を中心に、ツヤとうるおいを補う。"]
       };
-      return order.filter(k => productKeys.includes(k)).map(k => labels[k]);
+
+      return order
+        .filter(k => productKeys.includes(k))
+        .map(k => labels[k]);
+    }
+
+    function goalAdjustedReason(concern, goal) {
+      return `${concern.reason} ${goal.message}`;
+    }
+
+    function renderResultImage(concern) {
+      const img = $("resultImage");
+      const fallback = $("resultImageFallback");
+
+      $("resultImageLabel").textContent = concern.title;
+      img.alt = `${concern.title}のケアイメージ`;
+      fallback.style.display = "grid";
+      img.style.display = "none";
+
+      img.onload = () => {
+        img.style.display = "block";
+        fallback.style.display = "none";
+      };
+
+      img.onerror = () => {
+        img.style.display = "none";
+        fallback.style.display = "grid";
+      };
+
+      img.src = concern.resultImage;
     }
 
     function renderResult() {
       const r = state.result;
-      const type = TYPES[r.mainKey];
-      const sub = r.subKey ? TYPES[r.subKey] : null;
+      const concern = CONCERNS[r.primaryConcern];
+      const goal = GOALS[r.goalKey];
 
-      $("resultTitle").textContent = type.title;
-      $("resultCatch").textContent = type.catch;
-      $("subtypeChip").textContent = sub ? `＋ あわせてケアしたい：${sub.title}` : "今はこのケアを最優先";
-      $("resultReason").textContent = type.reason;
-      $("priorityCare").innerHTML = `<div class="massage-step"><b>優先したいケア</b><p>${type.priority}</p></div>`;
-      $("shareQuote").textContent = `私は「${type.title}」でした。`;
+      $("resultTitle").textContent = concern.title;
+      $("resultCatch").textContent = concern.resultCatch;
+      $("resultGoal").textContent = goal.label;
 
-      const metrics = normalizedMetrics(r.mainKey, r.scores);
-      $("scorePanel").innerHTML = Object.entries(metrics).map(([label, value]) => `
+      const sub = subConcernLabel(r.subKey);
+      $("subtypeChip").textContent = sub
+        ? `＋ あわせて気になるサイン：${sub}`
+        : "今はこの悩みを最優先";
+
+      renderResultImage(concern);
+
+      const metrics = normalizedCareMetrics(r.careScores);
+      $("scorePanel").innerHTML = metrics.map(([label, value]) => `
         <div class="score-row">
           <strong>${label}</strong>
           <div class="score-bar"><i style="width:${value}%"></i></div>
@@ -956,16 +1483,42 @@
         </div>
       `).join("");
 
+      $("resultReason").textContent = goalAdjustedReason(concern, goal);
+
+      $("priorityCare").innerHTML = `
+        <div class="priority-box">
+          <b>最優先したいケア</b>
+          <p>${concern.priority}</p>
+        </div>
+      `;
+
+      if (r.goalKey === "simple") {
+        $("productLead").textContent =
+          "続けやすさを優先して、あなたが一番気になる悩みに合うものから2点までに絞っています。";
+        $("routineLead").textContent =
+          "手間を増やしすぎないよう、選んだ商品の使う順番だけをシンプルにまとめました。";
+      } else {
+        $("productLead").textContent =
+          "第一推奨は、あなたが「一番気になる」と答えた悩みを最優先。そのうえで回答全体から補助ケアを加えています。";
+        $("routineLead").textContent =
+          "毎日の流れに入れやすい順番でまとめました。";
+      }
+
       const ranks = ["まず使うならこれ", "一緒に使うなら", "必要に応じてプラス"];
-      $("productList").innerHTML = r.productKeys.slice(0,3).map((key, index) => {
+
+      $("productList").innerHTML = r.productKeys.map((key, index) => {
         const p = PRODUCTS[key];
         return `
           <article class="product-card ${index === 0 ? "primary-product" : ""}">
             <div class="product-art">
-              <img src="${p.image}" alt="${p.name}" onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend','<span>PRODUCT PHOTO<br>${p.name}</span>')">
+              <img
+                src="${p.image}"
+                alt="${p.name}"
+                onerror="this.style.display='none';this.parentElement.insertAdjacentHTML('beforeend','<span>PRODUCT PHOTO<br>${p.name}</span>')"
+              >
             </div>
             <div>
-              <span class="product-rank">${ranks[index]}</span>
+              <span class="product-rank">${ranks[index] || "おすすめ"}</span>
               <h4>${p.name}</h4>
               <div class="product-meta">${p.meta}</div>
               <p>${p.role}</p>
@@ -976,8 +1529,16 @@
 
       const routine = careRoutine(r.productKeys);
       $("routine").innerHTML = routine.map(([title, desc]) => `
-        <div class="routine-step"><div><strong>${title}</strong><span>${desc}</span></div></div>
+        <div class="routine-step">
+          <div>
+            <strong>${title}</strong>
+            <span>${desc}</span>
+          </div>
+        </div>
       `).join("");
+
+      $("shareQuote").textContent =
+        `私の最優先は「${concern.title}」でした。`;
     }
 
     function showToast(message) {
@@ -989,24 +1550,44 @@
     }
 
     async function shareResult() {
-      const type = TYPES[state.result.mainKey];
-      const text = `私は「${type.title}」でした。\n約1分の髪と頭皮のセルフケア診断。あなたは何タイプ？`;
-      const data = { title: CONFIG.shareTitle, text, url: location.href };
+      const concern = CONCERNS[state.result.primaryConcern];
+      const goal = GOALS[state.result.goalKey];
+
+      const text =
+        `私の髪と頭皮の診断結果は「${concern.title}」が最優先でした。\n` +
+        `髪に求めていることは「${goal.label}」。\n` +
+        `約2分の髪と頭皮セルフケア診断。`;
+
+      const url = CONFIG.appUrl || location.href;
+      const data = {
+        title: CONFIG.shareTitle,
+        text,
+        url
+      };
+
       try {
         if (navigator.share) {
           await navigator.share(data);
         } else {
-          await navigator.clipboard.writeText(`${text}\n${location.href}`);
+          await navigator.clipboard.writeText(`${text}\n${url}`);
           showToast("シェア用テキストをコピーしました");
         }
       } catch (e) {
-        if (e?.name !== "AbortError") showToast("シェアを完了できませんでした");
+        if (e?.name !== "AbortError") {
+          showToast("シェアを完了できませんでした");
+        }
       }
     }
 
     async function consult() {
-      const type = TYPES[state.result.mainKey];
-      const msg = `診断で「${type.title}」が出ました。おすすめケアについて相談したいです。`;
+      const concern = CONCERNS[state.result.primaryConcern];
+      const goal = GOALS[state.result.goalKey];
+
+      const msg =
+        `診断で「${concern.title}」が最優先になりました。` +
+        `髪に求めていることは「${goal.label}」です。` +
+        `おすすめケアについて相談したいです。`;
+
       if (CONFIG.lineUrl) {
         try { await navigator.clipboard.writeText(msg); } catch (_) {}
         window.open(CONFIG.lineUrl, "_blank", "noopener");
@@ -1044,12 +1625,14 @@
 
     $("nextBtn").addEventListener("click", () => {
       if (state.answers[state.current] === null) return;
+
       if (state.current < QUESTIONS.length - 1) {
         state.current += 1;
         renderQuestion();
       } else {
         state.result = calculateResult();
         showScreen("analyzeScreen");
+
         setTimeout(() => {
           renderResult();
           showScreen("resultScreen");
