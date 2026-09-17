@@ -1801,32 +1801,38 @@
     }
 
     function chooseDiagnosis(ratios) {
+      const entries = Object.entries(ratios).sort((a, b) => b[1] - a[1]);
+      const [topAxis, topVal] = entries[0];
+      const secondVal = entries[1][1];
       const values = Object.values(ratios);
-      const maxVal = Math.max(...values);
-      const sorted = [...values].sort((a, b) => b - a);
       const mediumCount = values.filter(v => v >= 0.34).length;
       const hair = Math.max(ratios.dry, ratios.damage);
       const base = Math.max(ratios.scalp, ratios.root);
+      const singleType = {
+        dry: "drySign",
+        damage: "tipRescue",
+        scalp: "scalpReset",
+        root: "rootFirst"
+      };
 
       // 4方向すべて低いときは、悪い結果を無理につくらない
-      if (maxVal < 0.34) return "good";
+      if (topVal < 0.34) return "good";
 
-      // 毛先側と頭皮・根元側の双方が強い
-      if (hair >= 0.55 && base >= 0.55) return "doubleCare";
+      // ひとつの軸が明確に強いときは、その特徴を優先する
+      if (topVal >= 0.67 && (topVal - secondVal) >= 0.10) {
+        return singleType[topAxis];
+      }
 
-      // 複数の中程度サインが分散して、ひとつに絞り切れない
-      if (mediumCount >= 3 || (mediumCount >= 2 && (sorted[0] - sorted[1]) < 0.08)) {
+      // 毛先側と頭皮・根元側の両方がしっかり強いときだけダブルケア
+      if (hair >= 0.60 && base >= 0.60) return "doubleCare";
+
+      // 複数方向にサインが分散しているときはトータルメンテナンス
+      if (mediumCount >= 3 || (mediumCount >= 2 && (topVal - secondVal) < 0.08)) {
         return "adultBalance";
       }
 
-      if (ratios.root >= 0.42 && ratios.root >= ratios.scalp + 0.08) return "rootFirst";
-      if (ratios.scalp >= 0.42) return "scalpReset";
-      if (ratios.damage >= 0.42 && ratios.damage >= ratios.dry + 0.08) return "tipRescue";
-      if (ratios.dry >= 0.42) return "drySign";
-
-      // 境界域は最も強い軸で振り分ける
-      const top = Object.entries(ratios).sort((a, b) => b[1] - a[1])[0][0];
-      return ({ dry: "drySign", damage: "tipRescue", scalp: "scalpReset", root: "rootFirst" })[top];
+      // それ以外は最も強い軸をそのまま診断タイプにする
+      return singleType[topAxis];
     }
 
     function calculateResult() {
